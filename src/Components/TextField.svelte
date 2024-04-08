@@ -7,7 +7,7 @@
 
 <style lang="scss">
   input {
-    background-image: url("@/assets/InputDesign.png");
+    background-image: url("@/assets/InputDesign.webp");
     background-size: cover; // Adjust the image size to cover the input
     background-position: center; // Center the background image
     border: none; // Remove border to make it seamless with the background image

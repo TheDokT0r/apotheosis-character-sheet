@@ -5,7 +5,7 @@
 </div>
 
 <style lang="scss">
-  $background: url("../assets/Backdrop.png");
+  $background: url("../assets/Backdrop.webp");
 
   html,
   body {
