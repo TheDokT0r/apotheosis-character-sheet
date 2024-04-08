@@ -1,6 +1,8 @@
 <!-- TODO: Fix later lol -->
 
-<div id="animatedBackground"></div>
+<div id="animatedBackground">
+  <slot />
+</div>
 
 <style lang="scss">
   $background: url("../assets/Backdrop.png");

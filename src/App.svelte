@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Router, Link, Route } from "svelte-routing";
-  import Sheet from "./Pages/Sheet.svelte";
+  import { Router, Route } from "svelte-routing";
+  import Sheet from "./Pages/ChracterSheet/Sheet.svelte";
   import Login from "./Pages/Login.svelte";
 
   export let url = "";
