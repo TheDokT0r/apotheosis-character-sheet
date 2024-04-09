@@ -1,7 +1,14 @@
-<script>
-  import Title from "@/Components/Title.svelte";
+<script lang="ts">
+  import TextField from "@/Components/TextField.svelte";
+import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
+  let playerName: string;
 
+  $: console.log(playerName);
 </script>
+
 <div>
-    <Title>Hello, World!</Title>
+  <TextFieldWithTitle
+    placeholder="Your Name Here"
+    title="Name"
+  />
 </div>

@@ -1,9 +1,4 @@
-<script lang="ts">
-</script>
-
-<div>
-  <input {...$$restProps} />
-</div>
+<input {...$$restProps} />
 
 <style lang="scss">
   input {
