@@ -1,27 +1,31 @@
 <script lang="ts">
+  import themeToCSS from "@/Helper/themeToCSS";
+
   export let color: string = "white";
   export let size: number = 1;
+  export const theme: ThemePlate = "Rust";
 
   const width = 300 * size + "px"; // Set width as needed
   const height = 90 * size + "px"; // Set height as needed
+
+  const cssTheme = themeToCSS[theme];
+  console.log(cssTheme);
 </script>
 
-<div class="drop-shadow-2xl" style:height style:width>
+<div
+  class="drop-shadow-2xl"
+  style:height
+  style:width
+  style="background-image: url({cssTheme.TitleBackground});"
+>
   <h1 style:color>
     <slot />
   </h1>
 </div>
 
 <style lang="scss">
-  @font-face {
-    font-family: "TitleFont";
-    src: url("@/fonts/Creepshow.otf");
-    font-weight: normal;
-    font-style: normal;
-  }
-
   div {
-    background-image: url("@/assets/Title-field.webp");
+    // background-image: url("@/assets/Title-field.webp");
     background-size: cover; // Adjust the image size to cover the input
     background-position: center; // Center the background image
     font-size: 3rem;
@@ -40,9 +44,16 @@
     background-color: transparent;
     text-align: center;
     outline: none;
-    font-family: "TitleFont";
-    background: linear-gradient(#a7793e, #e1c289, #a7793e, #e1c289, #a7793e);
-    -webkit-background-clip: text;
+    font-family: "Creepshow";
+    background: linear-gradient(
+      0.25turn,
+      #a7793e,
+      #e1c289,
+      #a7793e,
+      #e1c289,
+      #a7793e
+    );
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 </style>

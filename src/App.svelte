@@ -2,6 +2,7 @@
   import { Router, Route } from "svelte-routing";
   import Sheet from "./Pages/ChracterSheet/Sheet.svelte";
   import Login from "./Pages/Login.svelte";
+  import './global.scss';
 
   export let url = "";
 </script>
