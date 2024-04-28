@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SkillTable from "@/Components/SkillTable.svelte";
+  import SkillTable from "@/Components/Skills/SkillTable.svelte";
 </script>
 
 <div>
