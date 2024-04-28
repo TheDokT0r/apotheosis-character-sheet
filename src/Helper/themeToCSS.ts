@@ -1,29 +1,34 @@
+import silverBack from "@/assets/Table/SilverBack.webp";
+import bronzeBack from "@/assets/Table/BronzeBack.webp";
+import goldBack from "@/assets/Table/GoldBack.webp";
+import rustBack from "@/assets/Title-field.webp";
+
 interface SkillPlateData {
-  TableBlock: Hex;
-  TitleText: Hex;
-  TitleBackground: string;
+  tableBlock: Hex;
+  titleText: Hex;
+  titleBackground: string;
 }
 
 const themeToCSS: Record<ThemePlate, SkillPlateData> = {
   Silver: {
-    TableBlock: "#858d8f",
-    TitleText: "#657373",
-    TitleBackground: "@/assets/Table/SilverBack.webp",
+    tableBlock: "#858d8f",
+    titleText: "#657373",
+    titleBackground: silverBack,
   },
   Bronze: {
-    TableBlock: "#8b7467",
-    TitleText: "#a7613e",
-    TitleBackground: "@/assets/Table/BronzeBack.webp",
+    tableBlock: "#8b7467",
+    titleText: "#a7613e",
+    titleBackground: bronzeBack,
   },
   Gold: {
-    TableBlock: "#8d8166",
-    TitleText: "#d1a52f",
-    TitleBackground: "@/assets/Table/GoldBack.webp",
+    tableBlock: "#8d8166",
+    titleText: "#d1a52f",
+    titleBackground: goldBack,
   },
   Rust: {
-    TableBlock: "#a7793e",
-    TitleText: "#a7793e",
-    TitleBackground: "@/assets/Title-field.webp",
+    tableBlock: "#a7793e",
+    titleText: "#a7793e",
+    titleBackground: rustBack,
   },
 };
 

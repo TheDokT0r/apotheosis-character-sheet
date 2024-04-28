@@ -4,8 +4,7 @@
 
 <div>
   <SkillTable
-    theme="Gold"
-    colors={["black", "yellow", "green"]}
+    theme="Bronze"
     title="General"
     skills={[
       "Encyclopedia",

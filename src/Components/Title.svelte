@@ -1,24 +1,38 @@
 <script lang="ts">
   import themeToCSS from "@/Helper/themeToCSS";
+  import adjustHex from "@/Helper/adjustHex";
 
   export let color: string = "white";
   export let size: number = 1;
-  export const theme: ThemePlate = "Rust";
+  export let theme: ThemePlate = "Rust";
 
   const width = 300 * size + "px"; // Set width as needed
   const height = 90 * size + "px"; // Set height as needed
 
   const cssTheme = themeToCSS[theme];
-  console.log(cssTheme);
+
+  const getHexColors = () => {
+    const mainColor = cssTheme.titleText;
+    const secondaryColor = adjustHex(mainColor, 20);
+
+    const hexValues = [
+      mainColor,
+      secondaryColor,
+      mainColor,
+      secondaryColor,
+    ].join(", ");
+
+    return `linear-gradient(0.25turn, ${hexValues})`;
+  };
 </script>
 
 <div
   class="drop-shadow-2xl"
   style:height
   style:width
-  style="background-image: url({cssTheme.TitleBackground});"
+  style="background-image: url({cssTheme.titleBackground});"
 >
-  <h1 style:color>
+  <h1 style="background-image: {getHexColors()};">
     <slot />
   </h1>
 </div>
@@ -45,14 +59,6 @@
     text-align: center;
     outline: none;
     font-family: "Creepshow";
-    background: linear-gradient(
-      0.25turn,
-      #a7793e,
-      #e1c289,
-      #a7793e,
-      #e1c289,
-      #a7793e
-    );
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }

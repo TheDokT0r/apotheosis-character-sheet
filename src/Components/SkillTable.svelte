@@ -1,29 +1,42 @@
 <script lang="ts">
   import Title from "./Title.svelte";
+  import themeToCSS from "@/Helper/themeToCSS";
+  import adjustHex from "@/Helper/adjustHex";
 
   export let title: string;
   export let skills: string[];
-  export let colors: string[];
   export let theme: ThemePlate;
 
-  $: cssVarStyles = colors.join(", ");
+  const css = themeToCSS[theme];
+
+  const tableBorderColors = () => {
+    const mainColor = css.tableBlock;
+    const secondaryColor = adjustHex(mainColor, -20);
+    const thirdColor = adjustHex(mainColor, 20);
+
+    return `linear-gradient(0.25turn, ${mainColor}, ${secondaryColor}, ${thirdColor})`;
+  };
 </script>
 
 <div>
-  <Title theme={theme} size={0.8}>{title}</Title>
+  <Title {theme} size={0.8}>{title}</Title>
 
-  <table>
-    <tr style={`background-color: linear-gradient(${cssVarStyles});`}>
-      <th>Skill Name</th>
-      <th>Pro</th>
-      <th>Skill Level</th>
+  <table style="border-image: {tableBorderColors()};">
+    <tr style="border-image: {tableBorderColors()};">
+      <th style="border-image: {tableBorderColors()};">Skill Name</th>
+      <th style="border-image: {tableBorderColors()};">Pro</th>
+      <th style="border-image: {tableBorderColors()};">Skill Level</th>
     </tr>
 
     {#each skills as skill}
       <tr>
-        <th class="skill">{skill}</th>
-        <td><input type="checkbox" /></td>
-        <td>
+        <th style="border-image: {tableBorderColors()};" class="skill"
+          >{skill}</th
+        >
+        <td style="border-image: {tableBorderColors()};"
+          ><input type="checkbox" /></td
+        >
+        <td style="border-image: {tableBorderColors()};">
           <input type="checkbox" />
           <input type="checkbox" />
           <input type="checkbox" />
@@ -36,15 +49,22 @@
 </div>
 
 <style lang="scss">
-  table,
+  table {
+    border-width: 4px;
+    border-style: inset;
+    user-select: none;
+  }
+
   th,
   td {
+    border-width: 2px;
+    border-style: inset;
     user-select: none;
-    border: 1px solid black;
   }
 
   th,
   tr {
     font-family: "Creepshow";
+    background: transparent;
   }
 </style>
