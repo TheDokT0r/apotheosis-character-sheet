@@ -8,6 +8,7 @@
   export let title: string;
   export let skills: string[];
   export let theme: ThemePlate;
+  const width: string = "40rem";
 
   const css = themeToCSS[theme];
 
@@ -22,10 +23,10 @@
   const textColor = adjustHex(css.tableBlock, 90);
 </script>
 
-<div style="color: {textColor}; border-image: {tableGradientColor()};">
-  <Title {theme} size={0.8}>{title}</Title>
+<div class="skill-table-container" style="color: {textColor};">
+  <Title {width} {theme}>{title}</Title>
 
-  <table>
+  <table style:width>
     <tr style="background-image: {tableGradientColor()};">
       <th>Skill Name</th>
       <th>Pro</th>
@@ -39,15 +40,17 @@
 </div>
 
 <style lang="scss">
+  .skill-table-container {
+    border: 4px outset black;
+    display: inline-block;
+  }
+
   table {
     border-width: 4px;
     border-style: inset;
     user-select: none;
     background-color: #ddcfbb;
-  }
 
-  table,
-  td {
-    overflow: hidden;
+    font-size: 2rem;
   }
 </style>

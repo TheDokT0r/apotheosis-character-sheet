@@ -16,8 +16,6 @@
   };
 
   $: isChecked = (level: number) => level <= currentSkillLevel;
-
-  $: console.log(currentSkillLevel);
 </script>
 
 <tr>
@@ -38,5 +36,8 @@
   td {
     border-width: 2px;
     border-style: inset;
+    position: relative; // Ensure relative positioning for the checkbox
+    padding: 0; // Remove padding to make checkbox cover the entire td
+    text-align: center;
   }
 </style>
