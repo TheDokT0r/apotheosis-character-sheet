@@ -28,15 +28,22 @@
 
 <style lang="scss">
   .sheet-container {
+    text-align: justify;
+    content: "";
+    display: inline-block;
+    width: 100%;
+
     .title {
       font-family: Creepshow-Grunge;
       width: 100%;
-      font-size: 4rem;
+      font-size: 5vw;
       position: relative;
       margin-top: 2rem;
       margin-bottom: 2rem;
       text-align: center;
       opacity: 90%;
+      flex-wrap: wrap;
+      white-space: initial;
     }
 
     h2 {

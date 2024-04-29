@@ -1,56 +1,53 @@
 <script lang="ts">
-  import TextField from "@/Components/TextField.svelte";
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
 
   interface TextWithTitleData {
     title: string;
     placeholder: string;
+    state: "major" | "minor";
   }
 
-  const majorStats: TextWithTitleData[] = [
-    { title: "Name", placeholder: "Your Name Here" },
-    { title: "Affiliation", placeholder: "Are you a damn commie?" },
-    { title: "Archetype", placeholder: "Are you buff?" },
-  ];
-
-  const minorStats: TextWithTitleData[] = [
-    { title: "Player", placeholder: "Who the hell are you???" },
-    { title: "Species", placeholder: "It feels kinda racist" },
+  const stats: TextWithTitleData[] = [
+    { title: "Name", placeholder: "Your Name Here", state: "major" },
+    { title: "Affiliation", placeholder: "Damn commie...", state: "major" },
+    { title: "Archetype", placeholder: "Are you buff?", state: "major" },
+    { title: "Player", placeholder: "Who the hell are you???", state: "minor" },
+    { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
   ];
 </script>
 
-<div>
-  <div class="basic-info-container">
-    {#each majorStats as { title, placeholder }}
-      <div class="input-container">
-        <TextFieldWithTitle bind:title bind:placeholder />
-      </div>
-    {/each}
-  </div>
-
-  <div class="basic-info-container minor-stats">
-    {#each minorStats as { title, placeholder }}
-      <div class="input-container">
-        <TextFieldWithTitle bind:title bind:placeholder />
-      </div>
-    {/each}
-  </div>
+<div class="basic-info-container">
+  {#each stats as { title, placeholder, state }}
+    <div
+      class="input-container"
+      style="transform: scale({state === 'major' ? 1 : 0.8});"
+    >
+      <TextFieldWithTitle {title} {placeholder} />
+    </div>
+  {/each}
 </div>
 
 <style lang="scss">
   .basic-info-container {
     display: flex;
-    flex-direction: columns;
-    justify-content: center;
-
-    .input-container {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 40px;
-    }
+    flex-wrap: wrap; // Wrap items onto multiple lines if necessary
+    justify-content: center; // Center items horizontally
+    align-items: center; // Center items vertically
   }
 
-  .minor-stats {
-    transform: scale(0.8);
+  .input-container {
+    width: calc(
+      33.33% - 20px
+    ); // Three items per row with a small gap between them
+    margin-bottom: 20px; // Adjust as needed
+
+    @media screen and (max-width: 768px) {
+      width: calc(50% - 20px); // Two items per row on smaller screens
+    }
+
+    @media screen and (max-width: 480px) {
+      width: 100%; // One item per row on extra small screens
+      justify-content: center; // Center items horizontally when there's only one item per row
+    }
   }
 </style>

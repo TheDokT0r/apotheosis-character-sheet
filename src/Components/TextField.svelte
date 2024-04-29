@@ -1,6 +1,5 @@
 <script lang="ts">
   import paperTape from "@/assets/Paper_Tape.webp";
-  import { onMount } from "svelte";
 
   export let width: string = "10rem";
   export let height: string = "5rem";
