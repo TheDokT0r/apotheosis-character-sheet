@@ -3,15 +3,15 @@
 
   interface SkillsData {
     [key: string]: {
-      skillNames: string[];
-      color: ThemePlate;
+      skills: string[];
+      theme: ThemePlate;
     };
   }
 
-  const skills: SkillsData = {
+  const skillsData: SkillsData = {
     general: {
-      color: "Silver",
-      skillNames: [
+      theme: "Silver",
+      skills: [
         "Encyclopedia",
         "Nature",
         "Science",
@@ -22,13 +22,13 @@
     },
 
     sensory: {
-      color: "Bronze",
-      skillNames: ["Visualization", "Gut", "Cool", "Grit"],
+      theme: "Bronze",
+      skills: ["Visualization", "Gut", "Cool", "Grit"],
     },
 
     physical: {
-      color: "Gold",
-      skillNames: [
+      theme: "Gold",
+      skills: [
         "Motorics",
         "Endurance",
         "Muscles",
@@ -39,8 +39,8 @@
     },
 
     tech: {
-      color: "Gold",
-      skillNames: [
+      theme: "Gold",
+      skills: [
         "Pilot",
         "Mechanics",
         "Interacting",
@@ -53,7 +53,7 @@
 </script>
 
 <div>
-  {#each Object.entries(skills) as [key, { skillNames, color }]}
-    <SkillTable skills={skillNames} theme={color} title={key} />
+  {#each Object.entries(skillsData) as [title, { skills, theme }]}
+    <SkillTable bind:skills bind:theme bind:title />
   {/each}
 </div>

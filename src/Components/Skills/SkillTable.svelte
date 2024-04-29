@@ -23,7 +23,10 @@
   const textColor = adjustHex(css.tableBlock, 90);
 </script>
 
-<div class="skill-table-container" style="color: {textColor};">
+<div
+  class="skill-table-container"
+  style="color: {textColor}; border-color: {css.tableBlock}"
+>
   <Title {width} {theme}>{title}</Title>
 
   <table style:width>
@@ -34,20 +37,20 @@
     </tr>
 
     {#each skills as skill}
-      <SkillLevel bind:skill gradientColor={tableGradientColor()} />
+      <SkillLevel bind:theme bind:skill gradientColor={tableGradientColor()} />
     {/each}
   </table>
 </div>
 
 <style lang="scss">
   .skill-table-container {
-    border: 4px outset black;
+    border: 4px outset;
     display: inline-block;
   }
 
   table {
     border-width: 4px;
-    border-style: inset;
+    border-style: outset;
     user-select: none;
     background-color: #ddcfbb;
 

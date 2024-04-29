@@ -1,10 +1,15 @@
 <script lang="ts">
+  import themeToCSS from "@/Helper/themeToCSS";
   import "./SkillTable.scss";
-  export let gradientColor: string;
   export let skill: string;
+  export let theme: ThemePlate;
+  export let gradientColor: string;
 
-  const MAX_SKILL_LEVEL: number = 5;
+  $: css = themeToCSS[theme];
+
+  const MAX_SKILL_LEVEL = 5 as const;
   let currentSkillLevel: number = 0;
+  let pro: boolean = false;
 
   const setSkillValue = (selectedLevel: number) => {
     if (currentSkillLevel === selectedLevel) {
@@ -20,12 +25,11 @@
 
 <tr>
   <th style="background-image: {gradientColor};">{skill}</th>
-  <td style="border-image: linear-gradient(to right, #ff7e5f, #feb47b) 1;"
-    ><input type="checkbox" /></td
-  >
+  <td><input bind:checked={pro} type="checkbox" /></td>
   <td>
     {#each Array(MAX_SKILL_LEVEL).fill("") as _, i}
       <input
+        style="border-color: {css.tableBlock};"
         type="checkbox"
         checked={isChecked(i + 1)}
         on:change={() => setSkillValue(i + 1)}
@@ -39,7 +43,12 @@
     border-width: 2px;
     border-style: outset;
     position: relative; // Ensure relative positioning for the checkbox
-    padding: 0; // Remove padding to make checkbox cover the entire td
     text-align: center;
+    flex-direction: row;
+  }
+
+  input {
+    transform: scale(2);
+    margin: 20px;
   }
 </style>
