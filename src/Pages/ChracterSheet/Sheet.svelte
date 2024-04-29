@@ -36,6 +36,7 @@
       margin-top: 2rem;
       margin-bottom: 2rem;
       text-align: center;
+      opacity: 90%;
     }
 
     h2 {

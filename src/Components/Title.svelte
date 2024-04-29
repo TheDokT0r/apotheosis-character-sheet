@@ -30,6 +30,10 @@
   class="shadow-inner"
   style="background-image: url({cssTheme.titleBackground}); width: {width}; height: {height};"
 >
+  {#if theme === "Rust"}
+    <div class="border-image"></div>
+  {/if}
+
   <h1
     class="drop-shadow-xl"
     style="background-image: {getHexColors()}; width: {width}; font-size: {fontSize}"
@@ -39,6 +43,10 @@
 </div>
 
 <style lang="scss">
+  .border-image {
+    background-image: url("@/assets/Rectangle.webp");
+  }
+
   h1 {
     background-size: cover; // Adjust the image size to cover the input
     background-position: center; // Center the background image

@@ -1,7 +1,7 @@
 import silverBack from "@/assets/Table/SilverBack.webp";
 import bronzeBack from "@/assets/Table/BronzeBack.webp";
 import goldBack from "@/assets/Table/GoldBack.webp";
-import rustBack from "@/assets/Title-field.webp";
+import rustBack from "@/assets/Table/RustBack.webp";
 
 interface SkillPlateData {
   tableBlock: Hex;

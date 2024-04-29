@@ -25,13 +25,13 @@
 
 <div
   class="skill-table-container"
-  style="color: {textColor}; border-color: {css.tableBlock}"
+  style="color: {textColor}; border-image: {css.tableBlock}"
 >
   <Title {width} height="4rem" {theme}>{title}</Title>
 
   <table style:width>
     <tr style="background-image: {tableGradientColor()};">
-    <th>Skill Name</th>
+      <th>Skill Name</th>
       <th>Pro</th>
       <th>Skill Level</th>
     </tr>

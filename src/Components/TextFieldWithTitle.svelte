@@ -5,7 +5,13 @@
   export let title: string;
 </script>
 
-<div>
-  <Title>{title}</Title>
-  <TextField {...$$restProps} />
+<div class="comp-container">
+  <Title theme="Rust" width="90%" fontSize="4rem" height="5rem">{title}</Title>
+  <TextField fontSize="1rem" width="100%" {...$$restProps} />
 </div>
+
+<style lang="scss">
+  .comp-container {
+    width: 20rem;
+  }
+</style>
