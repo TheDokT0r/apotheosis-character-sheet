@@ -31,7 +31,7 @@
 
   <table style:width>
     <tr style="background-image: {tableGradientColor()};">
-      <th>Skill Name</th>
+    <th>Skill Name</th>
       <th>Pro</th>
       <th>Skill Level</th>
     </tr>

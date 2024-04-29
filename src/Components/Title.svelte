@@ -5,6 +5,7 @@
   export let theme: ThemePlate = "Rust";
   export let width: string = "20rem";
   export let height: string = "100%";
+  export let fontSize: string = "4rem";
 
   const cssTheme = themeToCSS[theme];
 
@@ -31,7 +32,7 @@
 >
   <h1
     class="drop-shadow-xl"
-    style="background-image: {getHexColors()}; width: {width}"
+    style="background-image: {getHexColors()}; width: {width}; font-size: {fontSize}"
   >
     <slot />
   </h1>
@@ -56,6 +57,5 @@
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-    font-size: 4rem;
   }
 </style>

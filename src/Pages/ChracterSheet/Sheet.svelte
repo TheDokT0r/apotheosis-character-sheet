@@ -7,10 +7,12 @@
 </script>
 
 <div class="sheet-container">
+  <h1 class="title">Wasterpunk Character Sheet</h1>
+
   <TabGroup justify="justify-center">
-    <Tab bind:group={tabSet} name="tab1" value={0}>Basic Info</Tab>
-    <Tab bind:group={tabSet} name="tab2" value={1}>Skills</Tab>
-    <Tab bind:group={tabSet} name="tab3" value={2}>Placeholder</Tab>
+    <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>
+    <Tab bind:group={tabSet} name="tab2" value={1}><h2>Skills</h2></Tab>
+    <Tab bind:group={tabSet} name="tab3" value={2}><h2>Placeholder</h2></Tab>
     <!-- Tab Panels --->
     <svelte:fragment slot="panel">
       {#if tabSet === 0}
@@ -26,11 +28,20 @@
 
 <style lang="scss">
   .sheet-container {
-    background-image: url("@/assets/Backdrop.webp");
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    .title {
+      font-family: Creepshow-Grunge;
+      width: 100%;
+      font-size: 4rem;
+      position: relative;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-family: Brush-King;
+      opacity: 90%;
+      font-size: 0.9rem;
+    }
   }
 </style>

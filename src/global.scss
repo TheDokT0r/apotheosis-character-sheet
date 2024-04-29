@@ -4,3 +4,27 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: "Brush-King";
+    src: url("@/fonts/Brush\ King.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Creepshow-Grunge";
+    src: url("@/fonts/CreepshowGrunge.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    background-image: url("@/assets/Backdrop.webp");
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
