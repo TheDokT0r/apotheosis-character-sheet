@@ -42,9 +42,6 @@
 
 <style lang="scss">
   .title-container {
-    border-image: url("../assets/Rectangle.webp");
-    border-width: 10px;
-    border-style: inset;
     margin: 0 auto;
   }
 
