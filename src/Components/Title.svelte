@@ -4,6 +4,7 @@
 
   export let theme: ThemePlate = "Rust";
   export let width: string = "20rem";
+  export let height: string = "100%";
 
   const cssTheme = themeToCSS[theme];
 
@@ -26,28 +27,26 @@
 
 <div
   class="shadow-inner"
-  style="background-image: url({cssTheme.titleBackground}); width: {width}"
+  style="background-image: url({cssTheme.titleBackground}); width: {width}; height: {height};"
 >
-  <h1 class="drop-shadow-xl" style="background-image: {getHexColors()};">
+  <h1
+    class="drop-shadow-xl"
+    style="background-image: {getHexColors()}; width: {width}"
+  >
     <slot />
   </h1>
 </div>
 
 <style lang="scss">
-  div {
-    // background-image: url("@/assets/Title-field.webp");
+  h1 {
     background-size: cover; // Adjust the image size to cover the input
     background-position: center; // Center the background image
-    font-size: 3rem;
-
-    // Center div goes brrr
-    display: grid;
-    place-items: center;
-  }
-
-  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 120px;
+    height: 100%;
     user-select: none;
-    display: table;
     border: none; // Remove border to make it seamless with the background image
     background-color: transparent;
     text-align: center;
@@ -57,5 +56,6 @@
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    font-size: 4rem;
   }
 </style>

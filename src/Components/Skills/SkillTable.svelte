@@ -27,7 +27,7 @@
   class="skill-table-container"
   style="color: {textColor}; border-color: {css.tableBlock}"
 >
-  <Title {width} {theme}>{title}</Title>
+  <Title {width} height="4rem" {theme}>{title}</Title>
 
   <table style:width>
     <tr style="background-image: {tableGradientColor()};">
