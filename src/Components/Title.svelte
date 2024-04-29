@@ -27,24 +27,25 @@
 </script>
 
 <div
-  class="shadow-inner"
-  style="background-image: url({cssTheme.titleBackground}); width: {width}; height: {height};"
+  class="shadow-inner title-container"
+  style="background-image: url({cssTheme.titleBackground});"
+  style:width
+  style:height
 >
-  {#if theme === "Rust"}
-    <div class="border-image"></div>
-  {/if}
-
   <h1
     class="drop-shadow-xl"
-    style="background-image: {getHexColors()}; width: {width}; font-size: {fontSize}"
+    style="background-image: {getHexColors()}; font-size: {fontSize}"
   >
     <slot />
   </h1>
 </div>
 
 <style lang="scss">
-  .border-image {
-    background-image: url("@/assets/Rectangle.webp");
+  .title-container {
+    border-image: url("../assets/Rectangle.webp");
+    border-width: 10px;
+    border-style: inset;
+    margin: 0 auto;
   }
 
   h1 {
@@ -55,6 +56,7 @@
     align-items: center;
     flex: 0 0 120px;
     height: 100%;
+    width: 100%;
     user-select: none;
     border: none; // Remove border to make it seamless with the background image
     background-color: transparent;

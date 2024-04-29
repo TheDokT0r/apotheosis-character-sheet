@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "bits-ui": "^0.21.2",
@@ -24,6 +25,7 @@
     "autoprefixer": "^10.4.16",
     "flowbite": "^2.3.0",
     "flowbite-svelte": "^0.44.24",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.32",
     "postcss-load-config": "^5.0.2",
     "sass": "^1.74.1",
