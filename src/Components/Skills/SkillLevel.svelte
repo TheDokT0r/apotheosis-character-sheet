@@ -20,7 +20,9 @@
 
 <tr>
   <th style="background-image: {gradientColor};">{skill}</th>
-  <td><input type="checkbox" /></td>
+  <td style="border-image: linear-gradient(to right, #ff7e5f, #feb47b) 1;"
+    ><input type="checkbox" /></td
+  >
   <td>
     {#each Array(MAX_SKILL_LEVEL).fill("") as _, i}
       <input
@@ -35,7 +37,7 @@
 <style lang="scss">
   td {
     border-width: 2px;
-    border-style: inset;
+    border-style: outset;
     position: relative; // Ensure relative positioning for the checkbox
     padding: 0; // Remove padding to make checkbox cover the entire td
     text-align: center;

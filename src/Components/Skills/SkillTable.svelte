@@ -17,7 +17,7 @@
     const secondaryColor = adjustHex(mainColor, -10);
     const thirdColor = adjustHex(mainColor, 10);
 
-    return `linear-gradient(0.25turn, ${secondaryColor}, ${mainColor}, ${thirdColor})`;
+    return `linear-gradient(to right , ${secondaryColor}, ${mainColor}, ${thirdColor})`;
   };
 
   const textColor = adjustHex(css.tableBlock, 90);

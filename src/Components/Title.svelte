@@ -8,8 +8,10 @@
   const cssTheme = themeToCSS[theme];
 
   const getHexColors = () => {
-    const mainColor = cssTheme.titleText;
-    const secondaryColor = adjustHex(mainColor, 20);
+    const ogColor = cssTheme.titleText;
+
+    const mainColor = adjustHex(ogColor, 50);
+    const secondaryColor = adjustHex(ogColor, 90);
 
     const hexValues = [
       mainColor,
@@ -23,11 +25,10 @@
 </script>
 
 <div
-  class="drop-shadow-2xl"
-  style:width
-  style="background-image: url({cssTheme.titleBackground});"
+  class="shadow-inner"
+  style="background-image: url({cssTheme.titleBackground}); width: {width}"
 >
-  <h1 style="background-image: {getHexColors()};">
+  <h1 class="drop-shadow-xl" style="background-image: {getHexColors()};">
     <slot />
   </h1>
 </div>
@@ -51,9 +52,10 @@
     background-color: transparent;
     text-align: center;
     outline: none;
-    font-family: "Creepshow";
+    font-family: Creepshow;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
   }
 </style>
