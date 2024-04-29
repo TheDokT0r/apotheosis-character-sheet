@@ -25,7 +25,13 @@
 
 <tr>
   <th style="background-image: {gradientColor};">{skill}</th>
-  <td><input bind:checked={pro} type="checkbox" /></td>
+  <td
+    ><input
+      style="width: 100%; border-color: {css.tableBlock}"
+      bind:checked={pro}
+      type="checkbox"
+    /></td
+  >
   <td>
     {#each Array(MAX_SKILL_LEVEL).fill("") as _, i}
       <input
@@ -47,8 +53,25 @@
     flex-direction: row;
   }
 
-  input {
-    transform: scale(2);
-    margin: 20px;
+  input[type="checkbox"] {
+    // transform: scale(4);
+    // margin: 1.8rem;
+
+    appearance: none;
+    width: calc(100% / 5);
+    height: 40px;
+
+    border-width: 2px;
+    border-style: outset;
+
+    outline: none;
+
+    &:checked {
+      content: url("@/assets/check.svg");
+      display: inline-block;
+      background-color: #008000; /* Green color for checked state */
+      color: #fff; /* White color for checkmark */
+      border-radius: 3px;
+    }
   }
 </style>

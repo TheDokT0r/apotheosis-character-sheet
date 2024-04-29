@@ -49,11 +49,9 @@
   }
 
   table {
-    border-width: 4px;
     border-style: outset;
     user-select: none;
     background-color: #ddcfbb;
-
     font-size: 2rem;
   }
 </style>
