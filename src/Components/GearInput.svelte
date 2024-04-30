@@ -7,19 +7,18 @@
   export let gear: 1 | 2 = 1;
 </script>
 
-<div class="gear-container">
+<div class="gear-container drop-shadow-xl">
   <img src={gear === 1 ? gear1 : gear2} alt="gear_img" />
   <input type="number" {...$$restProps} />
   <div class="title-container">
-    <Title theme="Rust" width="100%" height="100%" fontSize="1.5em"
-      >{title}</Title
+    <Title theme="Rust" width="100%" height="100%" fontSize="2em">{title}</Title
     >
   </div>
 </div>
 
 <style lang="scss">
   .gear-container {
-    width: 10vw;
+    width: 10rem;
     position: relative; /* Establishes positioning context */
 
     .title-container {

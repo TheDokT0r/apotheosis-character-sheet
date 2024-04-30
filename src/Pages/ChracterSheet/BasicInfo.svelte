@@ -15,27 +15,55 @@
     { title: "Player", placeholder: "Who the hell are you???", state: "minor" },
     { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
   ];
+
+  const basicPlayerInfoTitles: string[] = ["PSY", "INT", "INL", "AGL", "PHY"];
 </script>
 
 <div class="basic-info-container">
-  {#each stats as { title, placeholder, state }}
-    <div
-      class="input-container"
-      style="transform: scale({state === 'major' ? 1 : 0.8});"
-    >
-      <TextFieldWithTitle {title} {placeholder} />
-    </div>
-  {/each}
-</div>
+  <div class="data-container">
+    {#each stats as { title, placeholder, state }}
+      <div
+        class="input-container"
+        style="transform: scale({state === 'major' ? 1 : 0.8});"
+      >
+        <TextFieldWithTitle {title} {placeholder} />
+      </div>
+    {/each}
+  </div>
 
-<GearInput title="test" />
+  <div class="data-container gears">
+    {#each basicPlayerInfoTitles as title}
+      <div class="gear-container">
+        <GearInput {title} />
+      </div>
+    {/each}
+  </div>
+</div>
 
 <style lang="scss">
   .basic-info-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap; // Wrap items onto multiple lines if necessary
     justify-content: center; // Center items horizontally
     align-items: center; // Center items vertically
+
+    .data-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; // Wrap items onto multiple lines if necessary
+      justify-content: center; // Center items horizontally
+      align-items: center; // Center items vertically
+      margin: 1rem;
+    }
+
+    .gears {
+      margin-top: -2.2rem;
+    }
+
+    .gear-container {
+      margin: 2rem;
+    }
   }
 
   .input-container {
