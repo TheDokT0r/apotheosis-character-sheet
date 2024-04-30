@@ -1,4 +1,5 @@
 <script lang="ts">
+  import GearInput from "@/Components/GearInput.svelte";
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
 
   interface TextWithTitleData {
@@ -27,6 +28,8 @@
   {/each}
 </div>
 
+<GearInput title="test" />
+
 <style lang="scss">
   .basic-info-container {
     display: flex;
@@ -40,10 +43,6 @@
       33.33% - 20px
     ); // Three items per row with a small gap between them
     margin-bottom: 20px; // Adjust as needed
-
-    @media screen and (max-width: 768px) {
-      width: calc(50% - 20px); // Two items per row on smaller screens
-    }
 
     @media screen and (max-width: 480px) {
       width: 100%; // One item per row on extra small screens
