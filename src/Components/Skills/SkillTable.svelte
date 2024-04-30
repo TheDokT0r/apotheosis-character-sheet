@@ -8,7 +8,6 @@
   export let title: string;
   export let skills: string[];
   export let theme: ThemePlate;
-  const width: string = "40rem";
 
   const css = themeToCSS[theme];
 
@@ -27,9 +26,9 @@
   class="skill-table-container"
   style="color: {textColor}; border-image: {css.tableBlock}"
 >
-  <Title {width} height="4rem" {theme}>{title}</Title>
+  <Title width="100%" height="4rem" {theme}>{title}</Title>
 
-  <table style:width>
+  <table>
     <tr style="background-image: {tableGradientColor()};">
       <th>Skill Name</th>
       <th>Pro</th>
@@ -46,6 +45,13 @@
   .skill-table-container {
     border: 4px outset;
     display: inline-block;
+
+    min-width: 50%;
+    max-width: 100%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   table {
@@ -53,5 +59,6 @@
     user-select: none;
     background-color: #ddcfbb;
     font-size: 2rem;
+    width: 100%;
   }
 </style>

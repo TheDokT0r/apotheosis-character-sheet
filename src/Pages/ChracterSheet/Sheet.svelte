@@ -29,9 +29,9 @@
 <style lang="scss">
   .sheet-container {
     text-align: justify;
-    content: "";
     display: inline-block;
     width: 100%;
+    font-size: 100%;
 
     .title {
       font-family: Creepshow-Grunge;

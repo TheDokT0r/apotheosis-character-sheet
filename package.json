@@ -2,6 +2,11 @@
   "name": "ttrpg-app",
   "version": "0.1.0",
   "type": "module",
+  "homepage": "https://thedokt0r.github.io/ttrpg-app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheDokT0r/ttrpg-app"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
