@@ -37,6 +37,7 @@
     .border-wrap {
       padding: 1rem;
       position: relative;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
       background: linear-gradient(
         0.25turn,
         #a7793e,

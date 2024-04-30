@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Stats from "../Stats.svelte";
   import BasicInfo from "./BasicInfo.svelte";
   import Skills from "./Skills.svelte";
   import { TabGroup, Tab } from "@skeletonlabs/skeleton";
@@ -11,15 +12,15 @@
 
   <TabGroup justify="justify-center">
     <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>
-    <Tab bind:group={tabSet} name="tab2" value={1}><h2>Skills</h2></Tab>
-    <Tab bind:group={tabSet} name="tab3" value={2}><h2>Placeholder</h2></Tab>
+    <Tab bind:group={tabSet} name="tab2" value={2}><h2>Stats</h2></Tab>
+    <Tab bind:group={tabSet} name="tab3" value={1}><h2>Skills</h2></Tab>
     <svelte:fragment slot="panel">
       {#if tabSet === 0}
         <BasicInfo />
       {:else if tabSet === 1}
         <Skills />
       {:else if tabSet === 2}
-        LOL
+        <Stats />
       {/if}
     </svelte:fragment>
   </TabGroup>

@@ -57,7 +57,3 @@
     <SkillTable bind:skills bind:theme bind:title />
   {/each}
 </div>
-
-<style lang="scss">
-  
-</style>

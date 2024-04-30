@@ -1,7 +1,6 @@
 <script lang="ts">
-  import DodgeDefenseInput from "@/Components/DodgeDefenseInput.svelte";
-  import GearInput from "@/Components/GearInput.svelte";
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
+  import GearInput from "@/Components/GearInput.svelte";
 
   interface TextWithTitleData {
     title: string;
@@ -16,9 +15,6 @@
     { title: "Player", placeholder: "Who the hell are you?", state: "minor" },
     { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
   ];
-
-  const proficiencyStats = ["PSY", "INT", "INL"];
-  const rankStats = ["AGL", "PHY"];
 </script>
 
 <div class="basic-info-container">
@@ -33,23 +29,9 @@
     {/each}
   </div>
 
-  <div class="data-container gears">
-    {#each proficiencyStats as title}
-      <div class="gear-container">
-        <GearInput {title} gear={1} />
-      </div>
-    {/each}
+  <div class="speed">
+    <GearInput title="Speed" />
   </div>
-
-  <div class="data-container gears">
-    {#each rankStats as title}
-      <div class="gear-container">
-        <GearInput {title} gear={2} />
-      </div>
-    {/each}
-  </div>
-
-  <DodgeDefenseInput />
 </div>
 
 <style lang="scss">
@@ -69,12 +51,8 @@
       margin: 1rem;
     }
 
-    .gears {
+    .speed {
       margin-top: -2.2rem;
-    }
-
-    .gear-container {
-      margin: 2rem;
     }
   }
 
