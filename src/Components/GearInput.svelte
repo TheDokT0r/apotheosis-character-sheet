@@ -7,11 +7,23 @@
   export let gear: 1 | 2 = 1;
   export let min: number = 0;
   export let max: number = 5;
+
+  let value: number | undefined;
+
+  const onBlurEvent = () => {
+    if (!value) return;
+    if (value > max) value = max;
+    if (value < min) value = min;
+  };
 </script>
 
 <div class="gear-container drop-shadow-xl">
   <img src={gear === 1 ? gear1 : gear2} alt="gear_img" />
   <input
+    on:blur={onBlurEvent}
+    {min}
+    {max}
+    bind:value
     style="transform: translate(-50%, -50%) scale({gear === 1 ? 0.5 : 0.6});"
     type="number"
     {...$$restProps}
@@ -50,7 +62,7 @@
       position: absolute;
       top: 50%; /* Positioning input in the middle vertically */
       left: 50%; /* Positioning input in the middle horizontally */
-       /* Center the input within the image */
+      /* Center the input within the image */
       text-align: center;
       font-size: 3em;
       font-family: Brush-King;
