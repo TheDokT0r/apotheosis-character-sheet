@@ -13,7 +13,6 @@
     <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>
     <Tab bind:group={tabSet} name="tab2" value={1}><h2>Skills</h2></Tab>
     <Tab bind:group={tabSet} name="tab3" value={2}><h2>Placeholder</h2></Tab>
-    <!-- Tab Panels --->
     <svelte:fragment slot="panel">
       {#if tabSet === 0}
         <BasicInfo />

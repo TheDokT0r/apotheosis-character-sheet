@@ -5,11 +5,17 @@
 
   export let title: string;
   export let gear: 1 | 2 = 1;
+  export let min: number = 0;
+  export let max: number = 5;
 </script>
 
 <div class="gear-container drop-shadow-xl">
   <img src={gear === 1 ? gear1 : gear2} alt="gear_img" />
-  <input type="number" {...$$restProps} />
+  <input
+    style="transform: translate(-50%, -50%) scale({gear === 1 ? 0.5 : 0.6});"
+    type="number"
+    {...$$restProps}
+  />
   <div class="title-container">
     <Title theme="Rust" width="100%" height="100%" fontSize="2em">{title}</Title
     >
@@ -44,9 +50,9 @@
       position: absolute;
       top: 50%; /* Positioning input in the middle vertically */
       left: 50%; /* Positioning input in the middle horizontally */
-      transform: translate(-50%, -50%) scale(0.5); /* Center the input within the image */
+       /* Center the input within the image */
       text-align: center;
-      font-size: 2em;
+      font-size: 3em;
       font-family: Brush-King;
     }
 

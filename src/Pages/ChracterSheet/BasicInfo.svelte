@@ -16,7 +16,8 @@
     { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
   ];
 
-  const basicPlayerInfoTitles: string[] = ["PSY", "INT", "INL", "AGL", "PHY"];
+  const proficiencyStats = ["PSY", "INT", "INL"];
+  const rankStats = ["AGL", "PHY"];
 </script>
 
 <div class="basic-info-container">
@@ -32,9 +33,17 @@
   </div>
 
   <div class="data-container gears">
-    {#each basicPlayerInfoTitles as title}
+    {#each proficiencyStats as title}
       <div class="gear-container">
-        <GearInput {title} />
+        <GearInput {title} gear={1} />
+      </div>
+    {/each}
+  </div>
+
+  <div class="data-container gears">
+    {#each rankStats as title}
+      <div class="gear-container">
+        <GearInput {title} gear={2} />
       </div>
     {/each}
   </div>
