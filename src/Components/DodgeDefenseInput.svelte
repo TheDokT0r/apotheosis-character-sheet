@@ -13,18 +13,16 @@
   };
 </script>
 
-<div class="circle"></div>
-
 <div class="skills-container">
+  <h2 class="skill dodge">Dodge</h2>
   <div class="border-wrap" style="width: {size}; height: {size};">
-    <h2 class="skill dodge">Dodge</h2>
-    <div class="inputs-container">
+    <div class="inputs-container shadow-2xl">
       <input type="number" bind:value={dodge} on:blur={onBlurEvent} />
       <p class="splitter">/</p>
       <input type="number" bind:value={defense} on:blur={onBlurEvent} />
     </div>
-    <h2 class="skill defense">Defense</h2>
   </div>
+  <h2 class="skill defense">Defense</h2>
 </div>
 
 <style lang="scss">
@@ -37,6 +35,7 @@
     .border-wrap {
       padding: 1rem;
       position: relative;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
       background: linear-gradient(
         0.25turn,
         #a7793e,
