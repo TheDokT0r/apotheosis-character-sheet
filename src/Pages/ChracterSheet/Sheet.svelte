@@ -7,7 +7,7 @@
 </script>
 
 <div class="sheet-container">
-  <h1 class="title">Wasterpunk Character Sheet</h1>
+  <h1 class="title">Apotheosis Character Sheet</h1>
 
   <TabGroup justify="justify-center">
     <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>

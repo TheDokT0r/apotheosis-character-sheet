@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/ttrpg-app/",
+  base: "/apotheosis-character-sheet/",
   plugins: [svelte()],
   resolve: {
     alias: {
