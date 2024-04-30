@@ -66,16 +66,9 @@
       text-align: center;
       font-size: 3em;
       font-family: Brush-King;
-    }
-
-    input[type="number"] {
-      -moz-appearance: textfield; /* Firefox */
-    }
-
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0; /* Optional - if you want to remove the margin */
+      &[type="number"] {
+        appearance: textfield;
+      }
     }
   }
 </style>

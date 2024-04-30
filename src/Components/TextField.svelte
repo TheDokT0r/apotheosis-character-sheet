@@ -21,10 +21,7 @@
     class="paper-tape"
     style="rotate: {rotation}deg;"
   />
-  <input
-    style="width: {width}; height: {height}; font-size: {fontSize}"
-    {...$$restProps}
-  />
+  <input style="font-size: {fontSize};" {...$$restProps} />
 </form>
 
 <style lang="scss">
@@ -37,11 +34,14 @@
     z-index: 2;
     width: 4rem;
     opacity: 70%;
-    bottom: -40%;
+    bottom: -5%;
     left: 40%;
   }
 
   input {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
     z-index: 1;
     background-image: url("@/assets/InputDesign.webp");
     background-size: cover; // Adjust the image size to cover the input
@@ -51,5 +51,7 @@
     text-align: center;
     outline: none;
     font-family: Brush-King;
+    width: 100%;
+    height: 60%;
   }
 </style>

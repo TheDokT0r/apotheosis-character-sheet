@@ -1,4 +1,5 @@
 <script lang="ts">
+  import DodgeDefenseInput from "@/Components/DodgeDefenseInput.svelte";
   import GearInput from "@/Components/GearInput.svelte";
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
 
@@ -12,7 +13,7 @@
     { title: "Name", placeholder: "Your Name Here", state: "major" },
     { title: "Affiliation", placeholder: "Damn commie...", state: "major" },
     { title: "Archetype", placeholder: "Are you buff?", state: "major" },
-    { title: "Player", placeholder: "Who the hell are you???", state: "minor" },
+    { title: "Player", placeholder: "Who the hell are you?", state: "minor" },
     { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
   ];
 
@@ -22,7 +23,7 @@
 
 <div class="basic-info-container">
   <div class="data-container">
-    {#each stats as { title, placeholder, state }}
+    {#each stats as { title, state, placeholder }}
       <div
         class="input-container"
         style="transform: scale({state === 'major' ? 1 : 0.8});"
@@ -47,6 +48,8 @@
       </div>
     {/each}
   </div>
+
+  <DodgeDefenseInput />
 </div>
 
 <style lang="scss">
