@@ -1,13 +1,13 @@
 <script lang="ts">
   import inputBackground from "@/assets/InputDesign.webp";
-  let item1Value: number;
-  let item2Value: number;
+  let currentValue: number;
+  let totalValue: number;
 </script>
 
 <div style="background-image: url({inputBackground});">
-  <input bind:value={item1Value} type="number" />
+  <input placeholder="amt" bind:value={currentValue} type="number" />
   <p class="splitter">/</p>
-  <input bind:value={item2Value} type="number" />
+  <input placeholder="ttl" bind:value={totalValue} type="number" />
 </div>
 
 <style lang="scss">

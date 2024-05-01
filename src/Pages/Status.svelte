@@ -2,6 +2,8 @@
   import SplitInputField from "@/Components/SplitInputField.svelte";
   import SplitSquareInput from "@/Components/SplitSquareInput.svelte";
   import TextField from "@/Components/TextField.svelte";
+  import heart from "@/assets/heart.webp";
+  import brokenHeart from "@/assets/broken_heart.webp";
 </script>
 
 <div class="status-container">
@@ -14,22 +16,31 @@
     />
   </div>
 
-  <div>
-    <SplitSquareInput />
+  <div class="health-stats-container">
+    <div>
+      <img src={heart} alt="heat_img" />
+      <SplitSquareInput />
+    </div>
+    <div>
+      <img src={brokenHeart} alt="heat_img" />
+      <SplitSquareInput />
+    </div>
   </div>
 </div>
 
 <style lang="scss">
   .status-container {
-    position: static;
+    position: relative;
+    display: flex;
     margin-top: 10em;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 
     .xp-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+      position: relative;
       margin-top: -10%;
-      transform: scale(0.8);
       padding: 1em;
 
       h1 {
@@ -37,12 +48,22 @@
         font-family: Creepshow;
         font-size: 4em;
         opacity: 70%;
-        text-align: center;
+        padding: 50px;
       }
 
       @media screen and (max-width: 480px) {
         position: relative;
-        margin-top: 20%;
+        margin-top: 20px;
+      }
+    }
+
+    .health-stats-container {
+      position: relative;
+
+      img {
+        transform: translate(-5%, 50%) rotate(-10deg);
+        width: 4em;
+        bottom: 0;
       }
     }
   }
