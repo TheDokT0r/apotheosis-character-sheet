@@ -1,6 +1,7 @@
 <script lang="ts">
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
   import GearInput from "@/Components/GearInput.svelte";
+  import SplitInputField from "@/Components/SplitInputField.svelte";
 
   interface TextWithTitleData {
     title: string;
@@ -32,6 +33,15 @@
   <div class="speed">
     <GearInput title="Speed" />
   </div>
+
+  <div class="xp-container">
+    <h1>XP</h1>
+    <SplitInputField
+      element1Title="Total"
+      element2Title="Available"
+      rotation={0}
+    />
+  </div>
 </div>
 
 <style lang="scss">
@@ -53,6 +63,31 @@
 
     .speed {
       margin-top: -2.2rem;
+    }
+  }
+
+  .xp-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    justify-content: center;
+    transform: scale(0.8);
+
+    h1 {
+      position: absolute;
+      z-index: 2;
+      font-family: Creepshow;
+      font-size: 4em;
+      opacity: 70%;
+      text-align: center;
+      top: 50%;
+      left: -50%;
+    }
+
+    @media screen and (max-width: 480px) {
+      position: relative;
     }
   }
 

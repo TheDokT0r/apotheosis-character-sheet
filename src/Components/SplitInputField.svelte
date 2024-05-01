@@ -1,33 +1,38 @@
 <script lang="ts">
   export let size: string = "10rem";
-  const min = -5;
-  const max = 5;
-  let dodge: number;
-  let defense: number;
+  export let element1Min: number | undefined = undefined;
+  export let element1Max: number | undefined = undefined;
+  export let element2Min: number | undefined = undefined;
+  export let element2Max: number | undefined = undefined;
+  export let rotation: number = -60;
+  export let element1Title: string;
+  export let element2Title: string;
+
+  let field1Value: number;
+  let field2Value: number;
 
   const onBlurEvent = () => {
-    if (dodge > max) dodge = max;
-    if (dodge < min) dodge = min;
-    if (defense > max) defense = max;
-    if (defense < min) defense = min;
+    if (element1Max && field1Value > element1Max) field1Value = element1Max;
+    if (element1Min && field1Value < element1Min) field1Value = element1Min;
+    if (element2Max && field2Value > element2Max) field2Value = element2Max;
+    if (element2Min && field2Value < element2Min) field2Value = element2Min;
   };
 </script>
 
-<div class="skills-container">
-  <h2 class="skill dodge">Dodge</h2>
+<div class="skills-container" style="rotate: {rotation}deg;">
+  <h2 class="skill dodge">{element1Title}</h2>
   <div class="border-wrap" style="width: {size}; height: {size};">
     <div class="inputs-container shadow-2xl">
-      <input type="number" bind:value={dodge} on:blur={onBlurEvent} />
+      <input type="number" bind:value={field1Value} on:blur={onBlurEvent} />
       <p class="splitter">/</p>
-      <input type="number" bind:value={defense} on:blur={onBlurEvent} />
+      <input type="number" bind:value={field2Value} on:blur={onBlurEvent} />
     </div>
   </div>
-  <h2 class="skill defense">Defense</h2>
+  <h2 class="skill defense">{element2Title}</h2>
 </div>
 
 <style lang="scss">
   .skills-container {
-    rotate: -60deg;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DodgeDefenseInput from "@/Components/DodgeDefenseInput.svelte";
+  import SplitInputField from "@/Components/SplitInputField.svelte";
   import GearInput from "@/Components/GearInput.svelte";
   import Title from "@/Components/Title.svelte";
 
@@ -24,7 +24,14 @@
 </div>
 
 <div class="dodge-defense-input">
-  <DodgeDefenseInput />
+  <SplitInputField
+    element1Title="Dodge"
+    element2Title="Defense"
+    element1Max={5}
+    element1Min={-5}
+    element2Max={5}
+    element2Min={-5}
+  />
 </div>
 
 <style lang="scss">
