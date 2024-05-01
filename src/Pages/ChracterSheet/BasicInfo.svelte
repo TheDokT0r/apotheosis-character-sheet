@@ -46,6 +46,14 @@
 
 <style lang="scss">
   .basic-info-container {
+    @media screen and (max-width: 480px) {
+      position: relative;
+      justify-content: center;
+      div {
+        position: relative !important;
+      }
+    }
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap; // Wrap items onto multiple lines if necessary
@@ -88,6 +96,7 @@
 
     @media screen and (max-width: 480px) {
       position: relative;
+      margin-top: 20%;
     }
   }
 

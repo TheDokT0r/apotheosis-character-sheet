@@ -3,24 +3,31 @@
   import BasicInfo from "./BasicInfo.svelte";
   import Skills from "./Skills.svelte";
   import { TabGroup, Tab } from "@skeletonlabs/skeleton";
+  import About from "../About.svelte";
 
   let tabSet: number = 0;
 </script>
 
 <div class="sheet-container">
-  <h1 class="title">Apotheosis Character Sheet</h1>
+  <div class="title-container">
+    <h1 class="title">Apotheosis Character Sheet</h1>
+    <p>Beta 0.1</p>
+  </div>
 
   <TabGroup justify="justify-center">
     <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>
-    <Tab bind:group={tabSet} name="tab2" value={2}><h2>Stats</h2></Tab>
-    <Tab bind:group={tabSet} name="tab3" value={1}><h2>Skills</h2></Tab>
+    <Tab bind:group={tabSet} name="tab2" value={1}><h2>Stats</h2></Tab>
+    <Tab bind:group={tabSet} name="tab3" value={2}><h2>Skills</h2></Tab>
+    <Tab bind:group={tabSet} name="tab3" value={3}><h2>About</h2></Tab>
     <svelte:fragment slot="panel">
       {#if tabSet === 0}
         <BasicInfo />
       {:else if tabSet === 1}
-        <Skills />
-      {:else if tabSet === 2}
         <Stats />
+      {:else if tabSet === 2}
+        <Skills />
+      {:else if tabSet === 3}
+        <About />
       {/if}
     </svelte:fragment>
   </TabGroup>
@@ -33,17 +40,27 @@
     width: 100%;
     font-size: 100%;
 
-    .title {
-      font-family: Creepshow-Grunge;
-      width: 100%;
-      font-size: 5vw;
-      position: relative;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      opacity: 90%;
-      flex-wrap: wrap;
-      white-space: initial;
+    .title-container {
+      display: flex;
+      flex-direction: row;
+      direction: ltr;
+      
+      p {
+        width: 5%
+      }
+
+      .title {
+        font-family: Creepshow-Grunge;
+        width: 100%;
+        font-size: 5vw;
+        position: relative;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        opacity: 90%;
+        flex-wrap: wrap;
+        white-space: initial;
+      }
     }
 
     h2 {
