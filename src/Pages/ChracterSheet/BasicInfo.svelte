@@ -1,31 +1,49 @@
 <script lang="ts">
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
-  import GearInput from "@/Components/GearInput.svelte";
-  import SplitInputField from "@/Components/SplitInputField.svelte";
+  import { getAuth } from "firebase/auth";
+  import { onMount } from "svelte";
 
   interface TextWithTitleData {
-    title: string;
-    placeholder: string;
-    state: "major" | "minor";
+    [title: string]: {
+      placeholder: string;
+      state: "major" | "minor";
+      value: string;
+    };
   }
 
-  const stats: TextWithTitleData[] = [
-    { title: "Name", placeholder: "Your Name Here", state: "major" },
-    { title: "Affiliation", placeholder: "Damn commie...", state: "major" },
-    { title: "Archetype", placeholder: "Are you buff?", state: "major" },
-    { title: "Player", placeholder: "Who the hell are you?", state: "minor" },
-    { title: "Species", placeholder: "It feels kinda racist", state: "minor" },
-  ];
+  const formattedData: TextWithTitleData = {
+    Name: { placeholder: "Your Name Here", state: "major", value: "" },
+    Affiliation: { placeholder: "Damn commie...", state: "major", value: "" },
+    Archetype: { placeholder: "Are you buff?", state: "major", value: "" },
+    Player: { placeholder: "Who the hell are you?", state: "minor", value: "" },
+    Species: {
+      placeholder: "It feels kinda racist",
+      state: "minor",
+      value: "",
+    },
+  };
+
+  
+  const getUserData = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (!user) return;
+    formattedData.Player.value = user.displayName ?? "";
+  };
+
+  onMount(() => {
+    getUserData();
+  });
 </script>
 
 <div class="basic-info-container">
   <div class="data-container">
-    {#each stats as { title, state, placeholder }}
+    {#each Object.entries(formattedData) as [title, { state, placeholder, value }]}
       <div
         class="input-container"
         style="transform: scale({state === 'major' ? 1 : 0.8});"
       >
-        <TextFieldWithTitle {title} {placeholder} />
+        <TextFieldWithTitle bind:value {title} {placeholder} />
       </div>
     {/each}
   </div>

@@ -4,6 +4,7 @@
     signInWithEmailAndPassword,
     getAuth,
     updateProfile,
+    sendPasswordResetEmail,
   } from "firebase/auth";
 
   import { toast } from "@zerodevx/svelte-toast";
@@ -12,21 +13,30 @@
 
   let email: string;
   let password: string;
+  let confirmPassword: string;
   let username: string;
+
+  const auth = getAuth();
 
   const setState = (newState: "login" | "signup") => {
     email = "";
     password = "";
     username = "";
+    confirmPassword = "";
     state = newState;
   };
 
   const signup = () => {
-    if (!email || !username || !password) {
-      toast.push("Invalid user data!");
+    if (!email || !username || !password || !confirmPassword) {
+      toast.push("Please fill up all data!");
+      return;
     }
 
-    const auth = getAuth();
+    if (password !== password) {
+      toast.push("Passwords don't match. Please try again!");
+      return;
+    }
+
     console.log({ auth });
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -43,7 +53,6 @@
   };
 
   const login = () => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         toast.push(`Welcome back, ${user.displayName}!`);
@@ -51,6 +60,10 @@
       .catch((error) => {
         toast.push(error.message);
       });
+  };
+
+  const resetPassword = () => {
+    toast.push("Coming soon!");
   };
 </script>
 
@@ -69,6 +82,13 @@
           <!-- svelte-ignore a11y-no-static-element-interactions -->
           <span on:click={() => setState("signup")}>Create one!</span>
         </p>
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <p>
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
+          Forgot your password? <span on:click={resetPassword}>reset it!</span>
+        </p>
       </div>
     </form>
   {:else}
@@ -77,6 +97,11 @@
       <input bind:value={email} type="email" placeholder="Email" />
       <input bind:value={username} type="text" placeholder="Username" />
       <input bind:value={password} type="password" placeholder="Password" />
+      <input
+        bind:value={confirmPassword}
+        type="password"
+        placeholder="Confirm Password"
+      />
       <button on:click|preventDefault={signup}>Create Account!</button>
 
       <div class="bottom-text">
