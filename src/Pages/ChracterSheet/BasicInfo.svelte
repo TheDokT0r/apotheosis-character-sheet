@@ -78,20 +78,19 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 60%;
-    left: 5%;
     justify-content: center;
+    margin-top: -10%;
     transform: scale(0.8);
+    left: 0;
+    bottom: 0;
+    padding: 1em;
 
     h1 {
-      position: absolute;
-      z-index: 2;
+      position: relative;
       font-family: Creepshow;
       font-size: 4em;
       opacity: 70%;
       text-align: center;
-      top: 50%;
-      left: -50%;
     }
 
     @media screen and (max-width: 480px) {
