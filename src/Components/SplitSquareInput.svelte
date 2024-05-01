@@ -5,16 +5,16 @@
 </script>
 
 <div style="background-image: url({inputBackground});">
-  <input placeholder="amt" bind:value={currentValue} type="number" />
+  <input placeholder="total" bind:value={currentValue} type="number" />
   <p class="splitter">/</p>
-  <input placeholder="ttl" bind:value={totalValue} type="number" />
+  <input placeholder="current" bind:value={totalValue} type="number" />
 </div>
 
 <style lang="scss">
   div {
     justify-content: center;
     display: flex;
-    width: 15em;
+    width: 22em;
     height: 5em;
     background-size: cover; // Adjust the image size to cover the input
     background-position: center; // Center the background image
@@ -25,8 +25,8 @@
   .splitter {
     z-index: 1;
     font-family: Brush-King;
-    font-size: 2em;
-    margin-top: 10%;
+    font-size: 2.5em;
+    margin-top: 5%;
   }
 
   input {

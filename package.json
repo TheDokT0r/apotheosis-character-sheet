@@ -15,9 +15,10 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "@iconslib/svelte": "^0.2.0",
     "bits-ui": "^0.21.2",
     "clsx": "^2.1.0",
-    "firebase": "^10.10.0",
+    "firebase": "^10.11.1",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1"
   },

@@ -29,11 +29,6 @@
       </div>
     {/each}
   </div>
-
-  <div class="speed">
-    <GearInput title="Speed" />
-  </div>
-
 </div>
 
 <style lang="scss">
@@ -41,6 +36,8 @@
     @media screen and (max-width: 480px) {
       position: relative;
       justify-content: center;
+      display: grid;
+      place-items: center;
       div {
         position: relative !important;
       }
@@ -60,10 +57,6 @@
       align-items: center; // Center items vertically
       margin: 1rem;
     }
-
-    .speed {
-      margin-top: -2.2rem;
-    }
   }
 
   .input-container {
@@ -75,6 +68,8 @@
     @media screen and (max-width: 480px) {
       width: 100%; // One item per row on extra small screens
       justify-content: center; // Center items horizontally when there's only one item per row
+      display: grid;
+      place-items: center;
     }
   }
 </style>

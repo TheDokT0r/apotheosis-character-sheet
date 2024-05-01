@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@iconslib/svelte':
+        specifier: ^0.2.0
+        version: 0.2.0(svelte@4.2.15)
       bits-ui:
         specifier: ^0.21.2
         version: 0.21.5(svelte@4.2.15)
@@ -15,7 +18,7 @@ importers:
         specifier: ^2.1.0
         version: 2.1.1
       firebase:
-        specifier: ^10.10.0
+        specifier: ^10.11.1
         version: 10.11.1
       tailwind-merge:
         specifier: ^2.2.2
@@ -437,6 +440,12 @@ packages:
     resolution: {integrity: sha512-DCVwMxqYzpUCiDMl7hQ384FqP4T3DbNpXU8pt681l3UWCip1WUiD5JrkImUwCB9a7f2cq4CUTmi5r/xIMRPY1Q==}
     engines: {node: '>=6'}
     hasBin: true
+
+  '@iconslib/svelte@0.2.0':
+    resolution: {integrity: sha512-8Sb9k77MYQLZEHI5H9DzeE2Gh2OS+3Ckz8siW7xvV7r+35bk4FFxEP/ZBl3RE1fn0J/uCPznZ7EEFzH+5IRzEg==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^4.0.0 || ^5.0.0
 
   '@internationalized/date@3.5.2':
     resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
@@ -2004,6 +2013,10 @@ snapshots:
       long: 5.2.3
       protobufjs: 7.2.6
       yargs: 17.7.2
+
+  '@iconslib/svelte@0.2.0(svelte@4.2.15)':
+    dependencies:
+      svelte: 4.2.15
 
   '@internationalized/date@3.5.2':
     dependencies:
