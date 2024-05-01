@@ -49,6 +49,7 @@
         font-size: 4em;
         opacity: 70%;
         padding: 50px;
+        user-select: none;
       }
 
       @media screen and (max-width: 480px) {

@@ -49,6 +49,11 @@
         "Electroacuity",
       ],
     },
+
+    magic: {
+      theme: "Bronze",
+      skills: ["Arcane", "Alchemy", "Animation", "Infusion", "Evocation"],
+    },
   };
 </script>
 
