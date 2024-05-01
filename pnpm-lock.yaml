@@ -11,6 +11,9 @@ importers:
       '@iconslib/svelte':
         specifier: ^0.2.0
         version: 0.2.0(svelte@4.2.15)
+      '@zerodevx/svelte-toast':
+        specifier: ^0.9.5
+        version: 0.9.5(svelte@4.2.15)
       bits-ui:
         specifier: ^0.21.2
         version: 0.21.5(svelte@4.2.15)
@@ -20,6 +23,9 @@ importers:
       firebase:
         specifier: ^10.11.1
         version: 10.11.1
+      sveltefire:
+        specifier: ^0.4.5
+        version: 0.4.5(firebase@10.11.1)(svelte@4.2.15)
       tailwind-merge:
         specifier: ^2.2.2
         version: 2.3.0
@@ -648,6 +654,11 @@ packages:
 
   '@yr/monotone-cubic-spline@1.0.3':
     resolution: {integrity: sha512-FQXkOta0XBSUPHndIKON2Y9JeQz5ZeMqLYZVVK93FliNBFm7LNMIZmY6FrMEB9XPcDbE2bekMbZD6kzDkxwYjA==}
+
+  '@zerodevx/svelte-toast@0.9.5':
+    resolution: {integrity: sha512-JLeB/oRdJfT+dz9A5bgd3Z7TuQnBQbeUtXrGIrNWMGqWbabpepBF2KxtWVhL2qtxpRqhae2f6NAOzH7xs4jUSw==}
+    peerDependencies:
+      svelte: ^3.57.0 || ^4.0.0
 
   acorn@8.11.3:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
@@ -1433,6 +1444,12 @@ packages:
     resolution: {integrity: sha512-j9KJSccHgLeRERPlhMKrCXpk2TqL2m5Z+k+OBTQhZOhIdCCd3WfqV+ylPWeipEwq17P/ekiSFWwrVQv93i3bsg==}
     engines: {node: '>=16'}
 
+  sveltefire@0.4.5:
+    resolution: {integrity: sha512-sNvDr4SadW1m5BF6Id7JIky3vOvTLOrP9w6vtcpvBo8TKvO4RqnohiRYGsFB2eK6RRKkA1H8ccuGd7sdbIrhFQ==}
+    peerDependencies:
+      firebase: ^9.0.0
+      svelte: ^4.0.0
+
   svg.draggable.js@2.2.2:
     resolution: {integrity: sha512-JzNHBc2fLQMzYCZ90KZHN2ohXL0BQJGQimK1kGk6AvSeibuKcIdDX9Kr0dT9+UJ5O8nYA0RB839Lhvk4CY4MZw==}
     engines: {node: '>= 0.8.0'}
@@ -2193,6 +2210,10 @@ snapshots:
   '@types/pug@2.0.10': {}
 
   '@yr/monotone-cubic-spline@1.0.3': {}
+
+  '@zerodevx/svelte-toast@0.9.5(svelte@4.2.15)':
+    dependencies:
+      svelte: 4.2.15
 
   acorn@8.11.3: {}
 
@@ -3007,6 +3028,11 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.10
       periscopic: 3.1.0
+
+  sveltefire@0.4.5(firebase@10.11.1)(svelte@4.2.15):
+    dependencies:
+      firebase: 10.11.1
+      svelte: 4.2.15
 
   svg.draggable.js@2.2.2:
     dependencies:
