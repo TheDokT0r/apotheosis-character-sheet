@@ -34,14 +34,6 @@
     <GearInput title="Speed" />
   </div>
 
-  <div class="xp-container">
-    <h1>XP</h1>
-    <SplitInputField
-      element1Title="Total"
-      element2Title="Available"
-      rotation={0}
-    />
-  </div>
 </div>
 
 <style lang="scss">
@@ -71,31 +63,6 @@
 
     .speed {
       margin-top: -2.2rem;
-    }
-  }
-
-  .xp-container {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    justify-content: center;
-    margin-top: -10%;
-    transform: scale(0.8);
-    left: 0;
-    bottom: 0;
-    padding: 1em;
-
-    h1 {
-      position: relative;
-      font-family: Creepshow;
-      font-size: 4em;
-      opacity: 70%;
-      text-align: center;
-    }
-
-    @media screen and (max-width: 480px) {
-      position: relative;
-      margin-top: 20%;
     }
   }
 

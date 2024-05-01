@@ -4,6 +4,7 @@
   import Skills from "./Skills.svelte";
   import { TabGroup, Tab } from "@skeletonlabs/skeleton";
   import About from "../About.svelte";
+  import Status from "../Status.svelte";
 
   let tabSet: number = 0;
 </script>
@@ -18,7 +19,8 @@
     <Tab bind:group={tabSet} name="tab1" value={0}><h2>Basic Info</h2></Tab>
     <Tab bind:group={tabSet} name="tab2" value={1}><h2>Stats</h2></Tab>
     <Tab bind:group={tabSet} name="tab3" value={2}><h2>Skills</h2></Tab>
-    <Tab bind:group={tabSet} name="tab3" value={3}><h2>About</h2></Tab>
+    <Tab bind:group={tabSet} name="tab3" value={3}><h2>Status</h2></Tab>
+    <Tab bind:group={tabSet} name="tab4" value={4}><h2>About</h2></Tab>
     <svelte:fragment slot="panel">
       {#if tabSet === 0}
         <BasicInfo />
@@ -27,6 +29,8 @@
       {:else if tabSet === 2}
         <Skills />
       {:else if tabSet === 3}
+        <Status />
+      {:else if tabSet === 4}
         <About />
       {/if}
     </svelte:fragment>
@@ -44,9 +48,9 @@
       display: flex;
       flex-direction: row;
       direction: ltr;
-      
+
       p {
-        width: 5%
+        width: 5%;
       }
 
       .title {

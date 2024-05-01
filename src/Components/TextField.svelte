@@ -4,6 +4,7 @@
   export let width: string = "10rem";
   export let height: string = "5rem";
   export let fontSize: string = "2rem";
+  export let tape: boolean = true;
 
   interface TapeLocation {
     top: number | string;
@@ -15,12 +16,14 @@
 </script>
 
 <form class="form-container" style:width style:height>
-  <img
-    src={paperTape}
-    alt="paper-tape"
-    class="paper-tape"
-    style="rotate: {rotation}deg;"
-  />
+  {#if tape}
+    <img
+      src={paperTape}
+      alt="paper-tape"
+      class="paper-tape"
+      style="rotate: {rotation}deg;"
+    />
+  {/if}
   <input style="font-size: {fontSize};" {...$$restProps} />
 </form>
 
