@@ -27,14 +27,14 @@ export default async function initUserDoc() {
     },
 
     attributes: {
-      physique: null,
-      intellect: null,
-      intuition: null,
-      agility: null,
-      psyche: null,
-      speed: null,
-      dodge: null,
-      defense: null,
+      physique: undefined,
+      intellect: undefined,
+      intuition: undefined,
+      agility: undefined,
+      psyche: undefined,
+      speed: undefined,
+      dodge: undefined,
+      defense: undefined,
     },
 
     skills: {

@@ -1,4 +1,5 @@
 import type { BasicInfoHeader } from "@/Helper/basicInfoAssist";
+import type { AttributeHeader } from "@/Helper/attributesAssist";
 
 declare global {
   type ThemePlate = "Rust" | "Silver" | "Gold" | "Bronze";
@@ -17,16 +18,7 @@ declare global {
   interface CharacterSheet {
     basic_info: Record<BasicInfoHeader, string>;
 
-    attributes: {
-      intellect: number | null;
-      intuition: number | null;
-      psyche: number | null;
-      agility: number | null;
-      physique: number | null;
-      speed: number | null;
-      dodge: number | null;
-      defense: number | null;
-    };
+    attributes: Record<AttributeHeader, number | undefined>;
 
     skills: {
       general: SkillData;
