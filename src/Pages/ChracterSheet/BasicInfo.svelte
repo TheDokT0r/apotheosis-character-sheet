@@ -23,10 +23,6 @@
     },
   };
 
-  const setData = (key: string, value: string) => {
-    formattedData = formattedData;
-  };
-
   const getUserData = () => {
     const auth = getAuth();
     const user = auth.currentUser;

@@ -6,9 +6,12 @@
     updateProfile,
     sendPasswordResetEmail,
   } from "firebase/auth";
-
   import { toast } from "@zerodevx/svelte-toast";
-
+  import initUserDoc from "@/Helper/initUserDoc";
+  import type { FirebaseApp } from "firebase/app";
+  
+  export let app: FirebaseApp;
+  
   let state: "login" | "signup" = "login";
 
   let email: string;
@@ -37,14 +40,13 @@
       return;
     }
 
-    console.log({ auth });
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed up
         const { user } = userCredential;
-        user.displayName;
 
         await updateProfile(auth.currentUser!, { displayName: username });
+        await initUserDoc(user, app);
         toast.push(`Welcome, ${user.displayName}!`);
       })
       .catch((error) => {
