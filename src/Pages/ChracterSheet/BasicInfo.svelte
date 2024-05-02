@@ -41,27 +41,25 @@
     },
   };
 
-  let data: CharacterSheet["basic_info"];
-
-  onMount(async () => {
+  const getBasicInfo = async () => {
     const sheet = await getCharacterSheet();
-    if (sheet) data = sheet.basic_info;
-  });
+    return sheet!.basic_info;
+  };
 
-  // I hate this so fucking much
-  $: allBasicInfoTypes.map((key) => {
-    if (data && data[key] === undefined) {
-      data[key] = "";
-    }
-  });
-
-  const updateData = async () => {
-    data = structuredClone(data);
+  const updateData = async (
+    data: CharacterSheet["basic_info"],
+    key: BasicInfoHeader,
+    newValue: string
+  ) => {
+    data[key] = newValue;
+    data = data;
     await updateCharacterSheet(data, "basic_info");
   };
 </script>
 
-{#if data}
+{#await getBasicInfo()}
+  <p>Fetching data...</p>
+{:then data}
   <div class="basic-info-container">
     <div class="data-container">
       {#each allBasicInfoTypes as key}
@@ -74,17 +72,16 @@
           <TextFieldWithTitle
             title={formattedData[key].title}
             placeholder={formattedData[key].placeholder}
-            bind:value={data[key]}
+            value={data[key]}
             onBlur={async (e) => {
-              data[key] = e.currentTarget.value;
-              await updateData();
+              await updateData(data, key, e.currentTarget.value);
             }}
           />
         </div>
       {/each}
     </div>
   </div>
-{/if}
+{/await}
 
 <style lang="scss">
   .basic-info-container {
