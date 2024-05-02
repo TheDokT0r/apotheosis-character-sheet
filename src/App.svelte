@@ -11,7 +11,7 @@
   export let url: string = "";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyB0gfMN5oo2gVqN1r7E0nVYsLp8STd1XZ8",
+    apiKey: import.meta.env.VITE_API_KEY,
 
     authDomain: "ttrpg-12502.firebaseapp.com",
 
