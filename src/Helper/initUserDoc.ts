@@ -1,10 +1,11 @@
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import type { User } from "firebase/auth";
-import type { FirebaseApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import firebaseApp from "./firebaseManager";
 
-export default async function initUserDoc(user: User, app: FirebaseApp) {
+export default async function initUserDoc() {
+  const user = getAuth().currentUser;
   if (!user) return;
-  const db = getFirestore(app);
+  const db = getFirestore(firebaseApp);
 
   const defaultSkillData: SkillData = {
     pro: false,
@@ -16,9 +17,9 @@ export default async function initUserDoc(user: User, app: FirebaseApp) {
     current: null,
   };
 
-  const basicUserData: UserData = {
+  const basicUserData: CharacterSheet = {
     basic_info: {
-      player_names: user.displayName ?? "",
+      player_name: user.displayName ?? "",
       affiliation: "",
       archetype: "",
       character_name: "",

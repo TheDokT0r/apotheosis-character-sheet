@@ -1,52 +1,90 @@
 <script lang="ts">
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
-  import { getAuth } from "firebase/auth";
+  import {
+    getCharacterSheet,
+    updateCharacterSheet,
+  } from "@/Helper/dataManager";
+  import {
+    allBasicInfoTypes,
+    type BasicInfoHeader,
+  } from "@/Helper/basicInfoAssist";
   import { onMount } from "svelte";
 
-  interface TextWithTitleData {
-    [title: string]: {
-      placeholder: string;
-      state: "major" | "minor";
-      value: string;
-    };
-  }
-
-  let formattedData: TextWithTitleData = {
-    Name: { placeholder: "Your Name Here", state: "major", value: "" },
-    Affiliation: { placeholder: "Damn commie...", state: "major", value: "" },
-    Archetype: { placeholder: "Are you buff?", state: "major", value: "" },
-    Player: { placeholder: "Who the hell are you?", state: "minor", value: "" },
-    Species: {
+  let formattedData: Record<
+    BasicInfoHeader,
+    { placeholder: string; state: "major" | "minor"; title: string }
+  > = {
+    character_name: {
+      placeholder: "Your Name Here",
+      state: "major",
+      title: "Name",
+    },
+    affiliation: {
+      placeholder: "Damn commie...",
+      state: "major",
+      title: "Affiliation",
+    },
+    archetype: {
+      placeholder: "Are you buff?",
+      state: "major",
+      title: "Archetype",
+    },
+    player_name: {
+      placeholder: "Who the hell are you?",
+      state: "minor",
+      title: "Player",
+    },
+    species: {
       placeholder: "It feels kinda racist",
       state: "minor",
-      value: "",
+      title: "Species",
     },
   };
 
-  const getUserData = () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user) return;
-    formattedData.Player.value = user.displayName ?? "";
-  };
+  let data: CharacterSheet["basic_info"];
 
-  onMount(() => {
-    getUserData();
+  onMount(async () => {
+    const sheet = await getCharacterSheet();
+    if (sheet) data = sheet.basic_info;
   });
+
+  // I hate this so fucking much
+  $: allBasicInfoTypes.map((key) => {
+    if (data && data[key] === undefined) {
+      data[key] = "";
+    }
+  });
+
+  const updateData = async () => {
+    data = structuredClone(data);
+    await updateCharacterSheet(data, "basic_info");
+  };
 </script>
 
-<div class="basic-info-container">
-  <div class="data-container">
-    {#each Object.entries(formattedData) as [title, { state, placeholder, value }]}
-      <div
-        class="input-container"
-        style="transform: scale({state === 'major' ? 1 : 0.8});"
-      >
-        <TextFieldWithTitle bind:value {title} {placeholder} />
-      </div>
-    {/each}
+{#if data}
+  <div class="basic-info-container">
+    <div class="data-container">
+      {#each allBasicInfoTypes as key}
+        <div
+          class="input-container"
+          style="transform: scale({formattedData[key].state === 'major'
+            ? 1
+            : 0.8});"
+        >
+          <TextFieldWithTitle
+            title={formattedData[key].title}
+            placeholder={formattedData[key].placeholder}
+            bind:value={data[key]}
+            onBlur={async (e) => {
+              data[key] = e.currentTarget.value;
+              await updateData();
+            }}
+          />
+        </div>
+      {/each}
+    </div>
   </div>
-</div>
+{/if}
 
 <style lang="scss">
   .basic-info-container {

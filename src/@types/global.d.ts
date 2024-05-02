@@ -1,3 +1,5 @@
+import type { BasicInfoHeader } from "@/Helper/basicInfoAssist";
+
 declare global {
   type ThemePlate = "Rust" | "Silver" | "Gold" | "Bronze";
   type Hex = `#${string}`;
@@ -12,14 +14,8 @@ declare global {
     current: number | null;
   }
 
-  interface UserData {
-    basic_info: {
-      character_name: string;
-      affiliation: string;
-      archetype: string;
-      player_names: string;
-      species: string;
-    };
+  interface CharacterSheet {
+    basic_info: Record<BasicInfoHeader, string>;
 
     attributes: {
       intellect: number | null;
