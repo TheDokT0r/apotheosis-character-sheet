@@ -5,6 +5,29 @@
   import { TabGroup, Tab } from "@skeletonlabs/skeleton";
   import About from "../About.svelte";
   import Status from "../Status.svelte";
+  import type { FirebaseApp } from "firebase/app";
+  import type { Auth } from "firebase/auth";
+  import { onMount } from "svelte";
+  import { navigate } from "svelte-routing";
+  import { doc, getDoc, getFirestore } from "firebase/firestore";
+  import initUserDoc from "@/Helper/initUserDoc";
+
+  export let auth: Auth;
+  export let app: FirebaseApp;
+
+  onMount(async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    const db = getFirestore(app);
+    const docRef = doc(db, "sheets", user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) await initUserDoc(user, app);
+  });
 
   let tabSet: number = 0;
 </script>

@@ -51,6 +51,6 @@ export default async function initUserDoc(user: User, app: FirebaseApp) {
       wounds: [],
     },
   };
-  console.table({ db, uid: user.uid, app });
+
   await setDoc(doc(db, "sheets", user.uid), basicUserData, { merge: true });
 }

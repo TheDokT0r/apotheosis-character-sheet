@@ -24,7 +24,7 @@
 
 <Router {url}>
   <svelte:fragment>
-    <Route path="/"><Sheet /></Route>
+    <Route path="/"><Sheet {auth} {app}/></Route>
     <Route path="login"><Login {app} /></Route>
   </svelte:fragment>
 </Router>
