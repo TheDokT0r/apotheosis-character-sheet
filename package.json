@@ -20,7 +20,6 @@
     "bits-ui": "^0.21.2",
     "clsx": "^2.1.0",
     "firebase": "^10.11.1",
-    "sveltefire": "^0.4.5",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1"
   },

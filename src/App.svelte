@@ -1,11 +1,14 @@
 <script lang="ts">
-  import Sheet from "./Pages/ChracterSheet/Sheet.svelte";
   import "./global.scss";
+  import Sheet from "./Pages/ChracterSheet/Sheet.svelte";
   import { initializeApp } from "firebase/app";
   import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
   import { getFirestore } from "firebase/firestore";
   import Login from "./Pages/Login.svelte";
   import { SvelteToast } from "@zerodevx/svelte-toast";
+  import { Router, Link, Route } from "svelte-routing";
+
+  export let url: string = "";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB0gfMN5oo2gVqN1r7E0nVYsLp8STd1XZ8",
@@ -31,6 +34,13 @@
     if (user) loggedIn = true;
   });
 </script>
+
+<!-- <Router {url}>
+  <svelte:fragment>
+    <Route path="/"><Sheet /></Route>
+    <Route path="login" component={Login} />
+  </svelte:fragment>
+</Router> -->
 
 {#if loggedIn}
   <Sheet />

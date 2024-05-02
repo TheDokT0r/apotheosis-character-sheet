@@ -11,7 +11,7 @@
     };
   }
 
-  const formattedData: TextWithTitleData = {
+  let formattedData: TextWithTitleData = {
     Name: { placeholder: "Your Name Here", state: "major", value: "" },
     Affiliation: { placeholder: "Damn commie...", state: "major", value: "" },
     Archetype: { placeholder: "Are you buff?", state: "major", value: "" },
@@ -23,7 +23,10 @@
     },
   };
 
-  
+  const setData = (key: string, value: string) => {
+    formattedData = formattedData;
+  };
+
   const getUserData = () => {
     const auth = getAuth();
     const user = auth.currentUser;
