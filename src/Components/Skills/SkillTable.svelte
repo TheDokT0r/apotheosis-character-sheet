@@ -4,9 +4,10 @@
   import adjustHex from "@/Helper/adjustHex";
   import SkillLevel from "./SkillLevel.svelte";
   import "./SkillTable.scss";
+  import { updateCharacterSheet } from "@/Helper/dataManager";
 
   export let title: string;
-  export let skills: string[];
+  export let skills: { [key: string]: SkillData };
   export let theme: ThemePlate;
 
   const css = themeToCSS[theme];
@@ -20,26 +21,38 @@
   };
 
   const textColor = adjustHex(css.tableBlock, 90);
+
+  $: async () => {
+    await updateCharacterSheet(skills, "skills");
+  };
 </script>
 
-<div
-  class="skill-table-container"
-  style="color: {textColor}; border-image: {css.tableBlock}"
->
-  <Title width="100%" height="4rem" {theme}>{title}</Title>
+{#if skills && css && theme && title}
+  <div
+    class="skill-table-container"
+    style="color: {textColor}; border-image: {css.tableBlock}"
+  >
+    <Title width="100%" height="4rem" {theme}>{title}</Title>
 
-  <table>
-    <tr style="background-image: {tableGradientColor()};">
-      <th>Skill Name</th>
-      <th>Pro</th>
-      <th>Skill Level</th>
-    </tr>
+    <table>
+      <tr style="background-image: {tableGradientColor()};">
+        <th>Skill Name</th>
+        <th>Pro</th>
+        <th>Skill Level</th>
+      </tr>
 
-    {#each skills as skill}
-      <SkillLevel bind:theme bind:skill gradientColor={tableGradientColor()} />
-    {/each}
-  </table>
-</div>
+      {#each Object.keys(skills) as skill}
+        <SkillLevel
+          bind:currentSkillLevel={skills[skill].skill_level}
+          bind:pro={skills[skill].pro}
+          bind:theme
+          bind:skill
+          gradientColor={tableGradientColor()}
+        />
+      {/each}
+    </table>
+  </div>
+{/if}
 
 <style lang="scss">
   .skill-table-container {

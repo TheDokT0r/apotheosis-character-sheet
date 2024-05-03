@@ -8,8 +8,8 @@
   $: css = themeToCSS[theme];
 
   const MAX_SKILL_LEVEL = 5 as const;
-  let currentSkillLevel: number = 0;
-  let pro: boolean = false;
+  export let currentSkillLevel: SkillData["skill_level"] = 0;
+  export let pro: SkillData["pro"] = false;
 
   const setSkillValue = (selectedLevel: number) => {
     if (currentSkillLevel === selectedLevel) {

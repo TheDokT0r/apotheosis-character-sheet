@@ -2,13 +2,12 @@
   import gear1 from "@/assets/gear1.webp";
   import gear2 from "@/assets/gear2.webp";
   import Title from "./Title.svelte";
-  import type { FocusEventHandler } from "svelte/elements";
 
   export let title: string;
   export let gear: 1 | 2 = 1;
 
   export let value: number | undefined;
-  export let onBlur: FocusEventHandler<HTMLInputElement> | null | undefined =
+  export let onBlur: BlurEvent =
     undefined;
 </script>
 

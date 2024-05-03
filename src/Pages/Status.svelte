@@ -1,7 +1,5 @@
 <script lang="ts">
-  import SplitInputField from "@/Components/SplitInputField.svelte";
   import SplitSquareInput from "@/Components/SplitSquareInput.svelte";
-  import TextField from "@/Components/TextField.svelte";
   import heart from "@/assets/heart.webp";
   import brokenHeart from "@/assets/broken_heart.webp";
   import Wounds from "./ChracterSheet/Wounds.svelte";

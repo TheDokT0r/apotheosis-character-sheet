@@ -82,6 +82,8 @@
 
   <div class="dodge-defense-input">
     <SplitInputField
+      field1Value={attributes.dodge}
+      field2Value={attributes.defense}
       element1Title="Dodge"
       element2Title="Defense"
       element1Max={5}
@@ -89,6 +91,16 @@
       element2Max={5}
       element2Min={-5}
       rotation={-45}
+      onBlur1={async (e) => {
+        attributes.dodge = Number(e.currentTarget.value);
+        attributes = attributes;
+        await updateCharacterSheet(attributes, "attributes");
+      }}
+      onBlur2={async (e) => {
+        attributes.defense = Number(e.currentTarget.value);
+        attributes = attributes;
+        await updateCharacterSheet(attributes, "attributes");
+      }}
     />
   </div>
 {/if}

@@ -2,6 +2,11 @@
   import inputBackground from "@/assets/InputDesign.webp";
   let currentValue: number;
   let totalValue: number;
+
+  export let onBlur1: BlurEvent = undefined;
+  export let onBlur2: BlurEvent = undefined;
+  export let value1: number | undefined = undefined;
+  export let value2: number | undefined = undefined;
 </script>
 
 <div style="background-image: url({inputBackground});">
