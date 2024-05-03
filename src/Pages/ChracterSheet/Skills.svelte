@@ -13,6 +13,17 @@
     magic: "Bronze",
   };
 
+  const updateSkills = async (
+    allSkills: Object,
+    skills: { [key: string]: SkillData },
+    title: string
+  ) => {
+    // @ts-ignore
+    allSkills[title] = skills;
+    allSkills = allSkills;
+    await updateCharacterSheet(allSkills, "skills");
+  };
+
   const getSkills = async () => {
     const sheet = await getCharacterSheet();
     return sheet!.skills;
@@ -23,6 +34,8 @@
   <div>
     {#each Object.entries(skillsTables) as [topic, skills]}
       <SkillTable
+        updateSkills={(skillsData) =>
+          updateSkills(skillsTables, skillsData, topic)}
         allSkills={skillsTables}
         bind:skills
         theme={tableToTheme[topic]}

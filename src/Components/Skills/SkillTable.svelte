@@ -13,6 +13,7 @@
   export let skills: { [key: string]: SkillData };
   export let theme: ThemePlate;
   export let allSkills: CharacterSheet["skills"];
+  export let updateSkills: (skills: { [key: string]: SkillData }) => void;
 
   const css = themeToCSS[theme];
 
@@ -26,12 +27,7 @@
 
   const textColor = adjustHex(css.tableBlock, 90);
 
-  $: async () => {
-    //@ts-ignore // Do I really care at this point?
-    allSkills[title] = skills;
-
-    await updateCharacterSheet(allSkills, "skills");
-  };
+  $: updateSkills(skills);
 </script>
 
 {#if skills && css && theme && title}
