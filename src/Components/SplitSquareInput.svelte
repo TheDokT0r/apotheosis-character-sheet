@@ -1,13 +1,26 @@
 <script lang="ts">
   import inputBackground from "@/assets/InputDesign.webp";
-  let currentValue: number;
-  let totalValue: number;
+  export let currentValue: number | null = null;
+  export let totalValue: number | null = null;
+
+  export let onBlur1: BlurEvent = undefined;
+  export let onBlur2: BlurEvent = undefined;
 </script>
 
 <div style="background-image: url({inputBackground});">
-  <input placeholder="total" bind:value={currentValue} type="number" />
+  <input
+    placeholder="total"
+    bind:value={currentValue}
+    on:blur={onBlur1}
+    type="number"
+  />
   <p class="splitter">/</p>
-  <input placeholder="current" bind:value={totalValue} type="number" />
+  <input
+    placeholder="current"
+    bind:value={totalValue}
+    on:blur={onBlur2}
+    type="number"
+  />
 </div>
 
 <style lang="scss">

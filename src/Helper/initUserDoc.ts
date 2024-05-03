@@ -1,10 +1,11 @@
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import type { User } from "firebase/auth";
-import type { FirebaseApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import firebaseApp from "./firebaseManager";
 
-export default async function initUserDoc(user: User, app: FirebaseApp) {
+export default async function initUserDoc() {
+  const user = getAuth().currentUser;
   if (!user) return;
-  const db = getFirestore(app);
+  const db = getFirestore(firebaseApp);
 
   const defaultSkillData: SkillData = {
     pro: false,
@@ -16,9 +17,9 @@ export default async function initUserDoc(user: User, app: FirebaseApp) {
     current: null,
   };
 
-  const basicUserData: UserData = {
+  const basicUserData: CharacterSheet = {
     basic_info: {
-      player_names: user.displayName ?? "",
+      player_name: user.displayName ?? "",
       affiliation: "",
       archetype: "",
       character_name: "",
@@ -37,11 +38,43 @@ export default async function initUserDoc(user: User, app: FirebaseApp) {
     },
 
     skills: {
-      general: defaultSkillData,
-      sensory: defaultSkillData,
-      physical: defaultSkillData,
-      tech: defaultSkillData,
-      magic: defaultSkillData,
+      general: {
+        encyclopedia: defaultSkillData,
+        nature: defaultSkillData,
+        science: defaultSkillData,
+        drugs: defaultSkillData,
+        scavenge: defaultSkillData,
+        splicing: defaultSkillData,
+      },
+      sensory: {
+        visualization: defaultSkillData,
+        gut: defaultSkillData,
+        cool: defaultSkillData,
+        grit: defaultSkillData,
+      },
+      physical: {
+        motorics: defaultSkillData,
+        endurance: defaultSkillData,
+        muscles: defaultSkillData,
+        armaments: defaultSkillData,
+        weaponry: defaultSkillData,
+        brawl: defaultSkillData,
+      },
+      tech: {
+        pilot: defaultSkillData,
+        mechanics: defaultSkillData,
+        interacting: defaultSkillData,
+        techware: defaultSkillData,
+        engineering: defaultSkillData,
+        electroacuity: defaultSkillData,
+      },
+      magic: {
+        arcane: defaultSkillData,
+        alchemy: defaultSkillData,
+        animation: defaultSkillData,
+        infusion: defaultSkillData,
+        evocation: defaultSkillData,
+      },
     },
 
     status: {
@@ -50,6 +83,8 @@ export default async function initUserDoc(user: User, app: FirebaseApp) {
       xp: defaultStatus,
       wounds: [],
     },
+
+    notes: "",
   };
 
   await setDoc(doc(db, "sheets", user.uid), basicUserData, { merge: true });

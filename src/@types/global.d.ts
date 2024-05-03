@@ -1,10 +1,16 @@
+import type { BasicInfoHeader } from "@/Helper/basicInfoAssist";
+import type { AttributeHeader } from "@/Helper/attributesAssist";
+import type { FocusEventHandler } from "svelte/elements";
+
 declare global {
+  type BlurEvent = FocusEventHandler<HTMLInputElement> | null | undefined;
+
   type ThemePlate = "Rust" | "Silver" | "Gold" | "Bronze";
   type Hex = `#${string}`;
 
   interface SkillData {
     pro: boolean;
-    skill_level: 0 | 5;
+    skill_level: number;
   }
 
   interface StatusData {
@@ -12,32 +18,49 @@ declare global {
     current: number | null;
   }
 
-  interface UserData {
-    basic_info: {
-      character_name: string;
-      affiliation: string;
-      archetype: string;
-      player_names: string;
-      species: string;
-    };
+  interface CharacterSheet {
+    basic_info: Record<BasicInfoHeader, string>;
 
-    attributes: {
-      intellect: number | null;
-      intuition: number | null;
-      psyche: number | null;
-      agility: number | null;
-      physique: number | null;
-      speed: number | null;
-      dodge: number | null;
-      defense: number | null;
-    };
+    attributes: Record<AttributeHeader, number | null>;
 
     skills: {
-      general: SkillData;
-      sensory: SkillData;
-      physical: SkillData;
-      tech: SkillData;
-      magic: SkillData;
+      general: {
+        encyclopedia: SkillData;
+        nature: SkillData;
+        science: SkillData;
+        drugs: SkillData;
+        scavenge: SkillData;
+        splicing: SkillData;
+      };
+      sensory: {
+        visualization: SkillData;
+        gut: SkillData;
+        cool: SkillData;
+        grit: SkillData;
+      };
+      physical: {
+        motorics: SkillData;
+        endurance: SkillData;
+        muscles: SkillData;
+        armaments: SkillData;
+        weaponry: SkillData;
+        brawl: SkillData;
+      };
+      tech: {
+        pilot: SkillData;
+        mechanics: SkillData;
+        interacting: SkillData;
+        techware: SkillData;
+        engineering: SkillData;
+        electroacuity: SkillData;
+      };
+      magic: {
+        arcane: SkillData;
+        alchemy: SkillData;
+        animation: SkillData;
+        infusion: SkillData;
+        evocation: SkillData;
+      };
     };
 
     status: {
@@ -46,6 +69,8 @@ declare global {
       xp: StatusData;
       wounds: string[];
     };
+
+    notes: string;
   }
 }
 

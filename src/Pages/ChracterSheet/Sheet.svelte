@@ -6,27 +6,25 @@
   import About from "../About.svelte";
   import Status from "../Status.svelte";
   import type { FirebaseApp } from "firebase/app";
-  import type { Auth } from "firebase/auth";
+  import { getAuth, type Auth } from "firebase/auth";
   import { onMount } from "svelte";
   import { navigate } from "svelte-routing";
   import { doc, getDoc, getFirestore } from "firebase/firestore";
   import initUserDoc from "@/Helper/initUserDoc";
-
-  export let auth: Auth;
-  export let app: FirebaseApp;
+  import firebaseApp from "@/Helper/firebaseManager";
 
   onMount(async () => {
-    const user = auth.currentUser;
+    const user = getAuth().currentUser;
     if (!user) {
       navigate("/login");
       return;
     }
 
-    const db = getFirestore(app);
+    const db = getFirestore(firebaseApp);
     const docRef = doc(db, "sheets", user.uid);
     const docSnap = await getDoc(docRef);
 
-    if (!docSnap.exists()) await initUserDoc(user, app);
+    if (!docSnap.exists()) await initUserDoc();
   });
 
   let tabSet: number = 0;
@@ -35,7 +33,7 @@
 <div class="sheet-container">
   <div class="title-container">
     <h1 class="title">Apotheosis Character Sheet</h1>
-    <p>Beta 0.1</p>
+    <p>Build 1.0.0 - House</p>
   </div>
 
   <TabGroup justify="justify-center">

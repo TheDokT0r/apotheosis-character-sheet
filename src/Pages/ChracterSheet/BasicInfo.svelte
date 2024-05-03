@@ -1,52 +1,102 @@
 <script lang="ts">
   import TextFieldWithTitle from "@/Components/TextFieldWithTitle.svelte";
-  import { getAuth } from "firebase/auth";
-  import { onMount } from "svelte";
+  import {
+    getCharacterSheet,
+    updateCharacterSheet,
+  } from "@/Helper/dataManager";
+  import {
+    allBasicInfoTypes,
+    type BasicInfoHeader,
+  } from "@/Helper/basicInfoAssist";
 
-  interface TextWithTitleData {
-    [title: string]: {
-      placeholder: string;
-      state: "major" | "minor";
-      value: string;
-    };
-  }
+  let notes: string | undefined = "";
 
-  let formattedData: TextWithTitleData = {
-    Name: { placeholder: "Your Name Here", state: "major", value: "" },
-    Affiliation: { placeholder: "Damn commie...", state: "major", value: "" },
-    Archetype: { placeholder: "Are you buff?", state: "major", value: "" },
-    Player: { placeholder: "Who the hell are you?", state: "minor", value: "" },
-    Species: {
+  getCharacterSheet().then((sheet) => {
+    notes = sheet!.notes;
+  });
+
+  let formattedData: Record<
+    BasicInfoHeader,
+    { placeholder: string; state: "major" | "minor"; title: string }
+  > = {
+    character_name: {
+      placeholder: "Your Name Here",
+      state: "major",
+      title: "Name",
+    },
+    affiliation: {
+      placeholder: "Damn commie...",
+      state: "major",
+      title: "Affiliation",
+    },
+    archetype: {
+      placeholder: "Are you buff?",
+      state: "major",
+      title: "Archetype",
+    },
+    player_name: {
+      placeholder: "Who the hell are you?",
+      state: "minor",
+      title: "Player",
+    },
+    species: {
       placeholder: "It feels kinda racist",
       state: "minor",
-      value: "",
+      title: "Species",
     },
   };
 
-  const getUserData = () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user) return;
-    formattedData.Player.value = user.displayName ?? "";
+  const getBasicInfo = async () => {
+    const sheet = await getCharacterSheet();
+    return sheet!.basic_info;
   };
 
-  onMount(() => {
-    getUserData();
-  });
+  const updateData = async (
+    data: CharacterSheet["basic_info"],
+    key: BasicInfoHeader,
+    newValue: string
+  ) => {
+    data[key] = newValue;
+    data = data;
+    await updateCharacterSheet(data, "basic_info");
+  };
 </script>
 
-<div class="basic-info-container">
-  <div class="data-container">
-    {#each Object.entries(formattedData) as [title, { state, placeholder, value }]}
-      <div
-        class="input-container"
-        style="transform: scale({state === 'major' ? 1 : 0.8});"
-      >
-        <TextFieldWithTitle bind:value {title} {placeholder} />
-      </div>
-    {/each}
+{#await getBasicInfo()}
+  <p>Fetching data...</p>
+{:then data}
+  <div class="basic-info-container">
+    <div class="data-container">
+      {#each allBasicInfoTypes as key}
+        <div
+          class="input-container"
+          style="transform: scale({formattedData[key].state === 'major'
+            ? 1
+            : 0.8});"
+        >
+          <TextFieldWithTitle
+            title={formattedData[key].title}
+            placeholder={formattedData[key].placeholder}
+            value={data[key]}
+            onBlur={async (e) => {
+              await updateData(data, key, e.currentTarget.value);
+            }}
+          />
+        </div>
+      {/each}
+    </div>
+
+    <h1>Extra notes:</h1>
+    <textarea
+      placeholder="It looks like shit cause I've made it in like 4:00AM. Please don't be mad at me :("
+      style="width: 20rem; height: 10rem;"
+      bind:value={notes}
+      on:blur={async () => {
+        await updateCharacterSheet(notes, "notes");
+      }}
+    />
   </div>
-</div>
+{/await}
 
 <style lang="scss">
   .basic-info-container {

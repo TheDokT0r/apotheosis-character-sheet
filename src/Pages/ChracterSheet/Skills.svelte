@@ -1,64 +1,33 @@
 <script lang="ts">
   import SkillTable from "@/Components/Skills/SkillTable.svelte";
+  import {
+    getCharacterSheet,
+    updateCharacterSheet,
+  } from "@/Helper/dataManager";
 
-  interface SkillsData {
-    [key: string]: {
-      skills: string[];
-      theme: ThemePlate;
-    };
-  }
+  const tableToTheme: Record<string, ThemePlate> = {
+    general: "Silver",
+    sensory: "Bronze",
+    physical: "Gold",
+    tech: "Rust",
+    magic: "Bronze",
+  };
 
-  const skillsData: SkillsData = {
-    general: {
-      theme: "Silver",
-      skills: [
-        "Encyclopedia",
-        "Nature",
-        "Science",
-        "Drugs",
-        "Scavenge",
-        "Splicing",
-      ],
-    },
-
-    sensory: {
-      theme: "Bronze",
-      skills: ["Visualization", "Gut", "Cool", "Grit"],
-    },
-
-    physical: {
-      theme: "Gold",
-      skills: [
-        "Motorics",
-        "Endurance",
-        "Muscles",
-        "Armaments",
-        "Weaponry",
-        "Brawl",
-      ],
-    },
-
-    tech: {
-      theme: "Gold",
-      skills: [
-        "Pilot",
-        "Mechanics",
-        "Interacting",
-        "Techware",
-        "Engineering",
-        "Electroacuity",
-      ],
-    },
-
-    magic: {
-      theme: "Bronze",
-      skills: ["Arcane", "Alchemy", "Animation", "Infusion", "Evocation"],
-    },
+  const getSkills = async () => {
+    const sheet = await getCharacterSheet();
+    return sheet!.skills;
   };
 </script>
 
-<div>
-  {#each Object.entries(skillsData) as [title, { skills, theme }]}
-    <SkillTable bind:skills bind:theme bind:title />
-  {/each}
-</div>
+{#await getSkills() then skillsTables}
+  <div>
+    {#each Object.entries(skillsTables) as [topic, skills]}
+      <SkillTable
+        allSkills={skillsTables}
+        bind:skills
+        theme={tableToTheme[topic]}
+        bind:title={topic}
+      />
+    {/each}
+  </div>
+{/await}

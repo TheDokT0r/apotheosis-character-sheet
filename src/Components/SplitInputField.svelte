@@ -8,8 +8,10 @@
   export let element1Title: string;
   export let element2Title: string;
 
-  let field1Value: number;
-  let field2Value: number;
+  export let field1Value: number = NaN;
+  export let field2Value: number = NaN;
+  export let onBlur1: BlurEvent = undefined;
+  export let onBlur2: BlurEvent = undefined;
 
   const onBlurEvent = () => {
     if (element1Max && field1Value > element1Max) field1Value = element1Max;
@@ -23,9 +25,9 @@
   <h2 class="skill dodge">{element1Title}</h2>
   <div class="border-wrap" style="width: {size}; height: {size};">
     <div class="inputs-container shadow-2xl">
-      <input type="number" bind:value={field1Value} on:blur={onBlurEvent} />
+      <input on:blur={onBlur1} type="number" bind:value={field1Value} />
       <p class="splitter">/</p>
-      <input type="number" bind:value={field2Value} on:blur={onBlurEvent} />
+      <input on:blur={onBlur2} type="number" bind:value={field2Value} />
     </div>
   </div>
   <h2 class="skill defense">{element2Title}</h2>

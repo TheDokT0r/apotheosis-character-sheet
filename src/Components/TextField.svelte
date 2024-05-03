@@ -1,16 +1,12 @@
 <script lang="ts">
   import paperTape from "@/assets/Paper_Tape.webp";
+  import type { FocusEventHandler } from "svelte/elements";
 
   export let width: string = "10rem";
   export let height: string = "5rem";
   export let fontSize: string = "2rem";
   export let tape: boolean = true;
-
-  interface TapeLocation {
-    top: number | string;
-    left: number | string;
-    rotation: number;
-  }
+  export let onBlur: FocusEventHandler<HTMLInputElement> | null | undefined= undefined;
 
   const rotation = Math.floor(Math.random() * 30) + 0;
 </script>
@@ -24,7 +20,11 @@
       style="rotate: {rotation}deg;"
     />
   {/if}
-  <input style="font-size: {fontSize};" {...$$restProps} />
+  <input
+    on:blur|preventDefault={onBlur}
+    style="font-size: {fontSize};"
+    {...$$restProps}
+  />
 </form>
 
 <style lang="scss">
