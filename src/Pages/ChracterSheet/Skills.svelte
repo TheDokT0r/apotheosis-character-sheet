@@ -1,6 +1,9 @@
 <script lang="ts">
   import SkillTable from "@/Components/Skills/SkillTable.svelte";
-  import { getCharacterSheet } from "@/Helper/dataManager";
+  import {
+    getCharacterSheet,
+    updateCharacterSheet,
+  } from "@/Helper/dataManager";
 
   const tableToTheme: Record<string, ThemePlate> = {
     general: "Silver",
@@ -19,7 +22,12 @@
 {#await getSkills() then skillsTables}
   <div>
     {#each Object.entries(skillsTables) as [topic, skills]}
-      <SkillTable bind:skills theme={tableToTheme[topic]} bind:title={topic} />
+      <SkillTable
+        allSkills={skillsTables}
+        bind:skills
+        theme={tableToTheme[topic]}
+        bind:title={topic}
+      />
     {/each}
   </div>
 {/await}

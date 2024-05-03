@@ -69,6 +69,8 @@ declare global {
       xp: StatusData;
       wounds: string[];
     };
+
+    notes: string;
   }
 }
 

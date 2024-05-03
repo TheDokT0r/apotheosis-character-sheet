@@ -4,11 +4,15 @@
   import adjustHex from "@/Helper/adjustHex";
   import SkillLevel from "./SkillLevel.svelte";
   import "./SkillTable.scss";
-  import { updateCharacterSheet } from "@/Helper/dataManager";
+  import {
+    getCharacterSheet,
+    updateCharacterSheet,
+  } from "@/Helper/dataManager";
 
   export let title: string;
   export let skills: { [key: string]: SkillData };
   export let theme: ThemePlate;
+  export let allSkills: CharacterSheet["skills"];
 
   const css = themeToCSS[theme];
 
@@ -23,7 +27,10 @@
   const textColor = adjustHex(css.tableBlock, 90);
 
   $: async () => {
-    await updateCharacterSheet(skills, "skills");
+    //@ts-ignore // Do I really care at this point?
+    allSkills[title] = skills;
+
+    await updateCharacterSheet(allSkills, "skills");
   };
 </script>
 

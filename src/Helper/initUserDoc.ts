@@ -83,6 +83,8 @@ export default async function initUserDoc() {
       xp: defaultStatus,
       wounds: [],
     },
+
+    notes: "",
   };
 
   await setDoc(doc(db, "sheets", user.uid), basicUserData, { merge: true });

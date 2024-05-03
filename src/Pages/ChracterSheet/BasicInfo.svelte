@@ -8,7 +8,12 @@
     allBasicInfoTypes,
     type BasicInfoHeader,
   } from "@/Helper/basicInfoAssist";
-  import { onMount } from "svelte";
+
+  let notes: string | undefined = "";
+
+  getCharacterSheet().then((sheet) => {
+    notes = sheet!.notes;
+  });
 
   let formattedData: Record<
     BasicInfoHeader,
@@ -80,6 +85,16 @@
         </div>
       {/each}
     </div>
+
+    <h1>Extra notes:</h1>
+    <textarea
+      placeholder="It looks like shit cause I've made it in like 4:00AM. Please don't be mad at me :("
+      style="width: 20rem; height: 10rem;"
+      bind:value={notes}
+      on:blur={async () => {
+        await updateCharacterSheet(notes, "notes");
+      }}
+    />
   </div>
 {/await}
 

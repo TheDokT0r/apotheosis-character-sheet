@@ -18,7 +18,7 @@ export async function getCharacterSheet(): Promise<CharacterSheet | null> {
   return data as CharacterSheet;
 }
 
-type DataType = "basic_info" | "attributes" | "skills" | "status";
+type DataType = "basic_info" | "attributes" | "skills" | "status" | "notes";
 
 export async function updateCharacterSheet<T>(data: T, dataType: DataType) {
   const auth = getAuth();
